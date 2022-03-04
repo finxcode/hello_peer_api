@@ -1,0 +1,209 @@
+basePath: /api/v0.1
+definitions:
+  controllers.RandomUser:
+    properties:
+      age:
+        example: 25
+        type: integer
+      coverImageUrl:
+        example: www.baidu.com
+        type: string
+      lat:
+        example: 22.51
+        type: number
+      lng:
+        example: 113.95
+        type: number
+      location:
+        example: 南山区
+        type: string
+      occupation:
+        example: 平面设计师
+        type: string
+      petName:
+        example: Amy
+        type: string
+      userName:
+        example: 豆豆
+        type: string
+    type: object
+  controllers.RandomUserDetails:
+    properties:
+      age:
+        example: 25
+        type: integer
+      constellation:
+        example: 处女座
+        type: string
+      declaration:
+        example: 交友宣言
+        type: string
+      education:
+        example: 本科
+        type: string
+      height:
+        example: 165cm
+        type: string
+      hobbies:
+        example: 兴趣爱好
+        type: string
+      hometown:
+        example: 湖南长沙
+        type: string
+      images:
+        example:
+        - www.baidu.com
+        - ' www.bing.com'
+        items:
+          type: string
+        type: array
+      occupation:
+        example: 平面设计师
+        type: string
+      resident:
+        example: 深圳
+        type: string
+      selfDesc:
+        example: 自我描述
+        type: string
+      tags:
+        example: 猫控 读书达人 电影爱好者 旅行者
+        type: string
+      theOne:
+        example: 希望另一半的样子
+        type: string
+      userName:
+        example: 豆豆
+        type: string
+      weight:
+        example: 43kg
+        type: string
+    type: object
+  models.Pagination:
+    properties:
+      limit:
+        example: 4
+        type: integer
+      offset:
+        example: 0
+        type: integer
+    type: object
+  models.SquareSettings:
+    properties:
+      gender:
+        example: f
+        type: string
+      location:
+        example: any
+        type: string
+    type: object
+host: 1.12.243.73:8686
+info:
+  contact:
+    email: 726569998@qq.com
+    name: Frank Sheng
+  description: Hello Peer是一款基于兴趣的社交应用。
+  termsOfService: API文档仅用于Hello Peer研发使用。
+  title: Hello Peer API
+  version: "0.1"
+paths:
+  /user/getRandomUsers/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: 可通过用户ID获取用户详情
+      operationId: get_random_users_details
+      parameters:
+      - description: 用户ID
+        in: query
+        name: uid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.RandomUserDetails'
+      summary: 获取广场用户详情
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: 可通过用户ID以及用户广场设置项获取随机用户列表
+      operationId: get_random_users_list_in_square
+      parameters:
+      - description: 用户ID
+        in: query
+        name: uid
+        required: true
+        type: string
+      - description: 分页
+        in: body
+        name: pagination
+        required: true
+        schema:
+          $ref: '#/definitions/models.Pagination'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/controllers.RandomUser'
+            type: array
+      summary: 获取用户广场随机用户列表
+      tags:
+      - User
+  /user/getSquareSettings/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: 可通过用户ID获取用户广场设置
+      operationId: get_square_settings
+      parameters:
+      - description: 用户ID
+        in: query
+        name: uid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SquareSettings'
+      summary: 获取用户广场设置
+      tags:
+      - User
+  /user/setSquareSettings/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: 可设置用户广场设置
+      operationId: set_square_settings
+      parameters:
+      - description: 用户ID
+        in: query
+        name: uid
+        required: true
+        type: string
+      - description: 设置
+        in: body
+        name: settings
+        required: true
+        schema:
+          $ref: '#/definitions/models.SquareSettings'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      summary: 设置用户广场设置
+      tags:
+      - User
+swagger: "2.0"
