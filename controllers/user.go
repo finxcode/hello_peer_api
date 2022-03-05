@@ -10,10 +10,24 @@ type RandomUser struct {
 	Lng           float32 `example:"113.95"`
 	Lat           float32 `example:"22.51"`
 	Location      string  `example:"南山区"`
-	CoverImageUrl string  `example:"www.baidu.com"`
+	CoverImageUrl string  `example:"www.coverUrl.com"`
 }
 
-type RandomUserDetails struct {
+type RecommendedUser struct {
+	UserName      string   `example:"豆豆"`
+	PetName       string   `example:"Amy"`
+	Age           int      `example:"25"`
+	Occupation    string   `example:"平面设计师"`
+	Lng           float32  `example:"113.95"`
+	Lat           float32  `example:"22.51"`
+	Location      string   `example:"南山区"`
+	Verified      bool     `example:"true"`
+	CoverImageUrl string   `example:"www.coverUrl.com"`
+	Tags          string   `example:"猫控 读书达人 电影爱好者"`
+	Images        []string `example:"www.imgUrl1.com, www.imgUrl2.com"`
+}
+
+type UserDetails struct {
 	UserName      string   `example:"豆豆"`
 	Age           int      `example:"25"`
 	Occupation    string   `example:"平面设计师"`
@@ -28,7 +42,7 @@ type RandomUserDetails struct {
 	Declaration   string   `example:"交友宣言"`
 	TheOne        string   `example:"希望另一半的样子"`
 	Tags          string   `example:"猫控 读书达人 电影爱好者 旅行者"`
-	Images        []string `example:"www.baidu.com, www.bing.com"`
+	Images        []string `example:"www.imgUrl1.com, www.imgUrl2.com"`
 }
 
 // GetRandomUsersInSquare
@@ -54,37 +68,22 @@ func GetRandomUsersInSquare(c *gin.Context) {
 // @Accept application/json
 // @Produce application/json
 // @Param uid query string true "用户ID"
-// @Success 200 {object} RandomUserDetails
+// @Success 200 {object} UserDetails
 // @Router /user/getRandomUsers/{user_id} [get]
 func GetRandomUserDetails(c *gin.Context) {
 	//获取用户详情
 }
 
-// GetSquareSettings
-// @Summary 获取用户广场设置
-// @Description 可通过用户ID获取用户广场设置
-// @ID get_square_settings
+// GetRecommendedUserList
+// @Summary 获取用户推荐用户列表
+// @Description 可通过用户ID获取推荐用户列表
+// @ID get_recommended_user_list
 // @Tags User
 // @Accept application/json
 // @Produce application/json
 // @Param uid query string true "用户ID"
-// @Success 200 {object} models.SquareSettings
-// @Router /user/getSquareSettings/{user_id} [get]
-func GetSquareSettings(c *gin.Context) {
-	//获取用户广场设置
-}
-
-// SetSquareSettings
-// @Summary 设置用户广场设置
-// @Description 可设置用户广场设置
-// @ID set_square_settings
-// @Tags User
-// @Accept application/json
-// @Produce application/json
-// @Param uid query string true "用户ID"
-// @Param settings body models.SquareSettings true "设置"
-// @Success 200
-// @Router /user/setSquareSettings/{user_id} [post]
-func SetSquareSettings(c *gin.Context) {
-	//设置用户广场设置
+// @Success 200 {array} RecommendedUser
+// @Router /user/getRecommendedUserList/{user_id} [get]
+func GetRecommendedUserList(c *gin.Context) {
+	//获取某一用户推荐用户列表
 }

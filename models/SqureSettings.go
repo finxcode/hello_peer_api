@@ -1,6 +1,6 @@
 package models
 
 type SquareSettings struct {
-	Gender   string `example:"f"`
-	Location string `example:"any"`
+	Gender   string `example:"女生"`
+	Location string `example:"不限"`
 }

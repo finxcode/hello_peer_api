@@ -47,7 +47,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/controllers.RandomUserDetails"
+                            "$ref": "#/definitions/controllers.UserDetails"
                         }
                     }
                 }
@@ -96,7 +96,76 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/getSquareSettings/{user_id}": {
+        "/user/getRecommendSetting/{user_id}": {
+            "get": {
+                "description": "可通过用户ID获取用户推荐设置",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "获取用户推荐设置",
+                "operationId": "get_recommend_settings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "用户ID",
+                        "name": "uid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.RecommendSetting"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/getRecommendedUserList/{user_id}": {
+            "get": {
+                "description": "可通过用户ID获取推荐用户列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "获取用户推荐用户列表",
+                "operationId": "get_recommended_user_list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "用户ID",
+                        "name": "uid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/controllers.RecommendedUser"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/getSquareSetting/{user_id}": {
             "get": {
                 "description": "可通过用户ID获取用户广场设置",
                 "consumes": [
@@ -106,7 +175,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "User"
+                    "Settings"
                 ],
                 "summary": "获取用户广场设置",
                 "operationId": "get_square_settings",
@@ -129,7 +198,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/setSquareSettings/{user_id}": {
+        "/user/setRecommendSetting/{user_id}": {
             "post": {
                 "description": "可设置用户广场设置",
                 "consumes": [
@@ -139,7 +208,46 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "User"
+                    "Settings"
+                ],
+                "summary": "设置用户广场设置",
+                "operationId": "set_recommend_settings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "用户ID",
+                        "name": "uid",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "设置",
+                        "name": "settings",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RecommendSetting"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/setSquareSetting/{user_id}": {
+            "post": {
+                "description": "可设置用户广场设置",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Settings"
                 ],
                 "summary": "设置用户广场设置",
                 "operationId": "set_square_settings",
@@ -179,7 +287,7 @@ const docTemplate = `{
                 },
                 "coverImageUrl": {
                     "type": "string",
-                    "example": "www.baidu.com"
+                    "example": "www.coverUrl.com"
                 },
                 "lat": {
                     "type": "number",
@@ -207,7 +315,62 @@ const docTemplate = `{
                 }
             }
         },
-        "controllers.RandomUserDetails": {
+        "controllers.RecommendedUser": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer",
+                    "example": 25
+                },
+                "coverImageUrl": {
+                    "type": "string",
+                    "example": "www.coverUrl.com"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "www.imgUrl1.com",
+                        " www.imgUrl2.com"
+                    ]
+                },
+                "lat": {
+                    "type": "number",
+                    "example": 22.51
+                },
+                "lng": {
+                    "type": "number",
+                    "example": 113.95
+                },
+                "location": {
+                    "type": "string",
+                    "example": "南山区"
+                },
+                "occupation": {
+                    "type": "string",
+                    "example": "平面设计师"
+                },
+                "petName": {
+                    "type": "string",
+                    "example": "Amy"
+                },
+                "tags": {
+                    "type": "string",
+                    "example": "猫控 读书达人 电影爱好者"
+                },
+                "userName": {
+                    "type": "string",
+                    "example": "豆豆"
+                },
+                "verified": {
+                    "type": "boolean",
+                    "example": true
+                }
+            }
+        },
+        "controllers.UserDetails": {
             "type": "object",
             "properties": {
                 "age": {
@@ -244,8 +407,8 @@ const docTemplate = `{
                         "type": "string"
                     },
                     "example": [
-                        "www.baidu.com",
-                        " www.bing.com"
+                        "www.imgUrl1.com",
+                        " www.imgUrl2.com"
                     ]
                 },
                 "occupation": {
@@ -291,16 +454,49 @@ const docTemplate = `{
                 }
             }
         },
+        "models.RecommendSetting": {
+            "type": "object",
+            "properties": {
+                "ageMax": {
+                    "type": "integer",
+                    "example": 40
+                },
+                "ageMin": {
+                    "type": "integer",
+                    "example": 22
+                },
+                "gender": {
+                    "type": "string",
+                    "example": "女生"
+                },
+                "hometown": {
+                    "type": "string",
+                    "example": "同省优先"
+                },
+                "location": {
+                    "type": "string",
+                    "example": "只要同城"
+                },
+                "petLover": {
+                    "type": "string",
+                    "example": "喜欢就行"
+                },
+                "tags": {
+                    "type": "string",
+                    "example": "不限"
+                }
+            }
+        },
         "models.SquareSettings": {
             "type": "object",
             "properties": {
                 "gender": {
                     "type": "string",
-                    "example": "f"
+                    "example": "女生"
                 },
                 "location": {
                     "type": "string",
-                    "example": "any"
+                    "example": "不限"
                 }
             }
         }
