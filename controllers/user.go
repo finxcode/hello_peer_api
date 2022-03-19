@@ -35,7 +35,7 @@ type UserDetails struct {
 	Height        string   `example:"165cm"`
 	Weight        string   `example:"43kg"`
 	Education     string   `example:"本科"`
-	Resident      string   `example:"深圳"`
+	Location      string   `example:"深圳"`
 	Hometown      string   `example:"湖南长沙"`
 	SelfDesc      string   `example:"自我描述"`
 	Hobbies       string   `example:"兴趣爱好"`
