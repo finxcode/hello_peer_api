@@ -171,7 +171,111 @@ info:
   title: Hello Peer API
   version: "0.1"
 paths:
-  /user/getRandomUsers/{user_id}:
+  /settings/getRecommendSetting/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: 可通过用户ID获取用户推荐设置
+      operationId: get_recommend_settings
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.RecommendSetting'
+      security:
+      - x-token: []
+      summary: 获取用户推荐设置
+      tags:
+      - Settings
+  /settings/getSquareSetting/{user_id}:
+    get:
+      consumes:
+      - application/json
+      description: 可通过用户ID获取用户广场设置
+      operationId: get_square_settings
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.SquareSettings'
+      security:
+      - x-token: []
+      summary: 获取用户广场设置
+      tags:
+      - Settings
+  /settings/setRecommendSetting/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: 可设置用户广场设置
+      operationId: set_recommend_settings
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 设置
+        in: body
+        name: settings
+        required: true
+        schema:
+          $ref: '#/definitions/models.RecommendSetting'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户广场设置
+      tags:
+      - Settings
+  /settings/setSquareSetting/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: 可设置用户广场设置
+      operationId: set_square_settings
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 设置
+        in: body
+        name: settings
+        required: true
+        schema:
+          $ref: '#/definitions/models.SquareSettings'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户广场设置
+      tags:
+      - Settings
+  /user/getRandomUserDetails/{user_id}:
     get:
       consumes:
       - application/json
@@ -193,15 +297,16 @@ paths:
       summary: 获取广场用户详情
       tags:
       - User
+  /user/getRandomUsers/{user_id}:
     post:
       consumes:
       - application/json
       description: 可通过用户ID以及用户广场设置项获取随机用户列表
       operationId: get_random_users_list_in_square
       parameters:
-      - description: 用户ID
-        in: query
-        name: uid
+      - description: Authorization
+        in: header
+        name: x-token
         required: true
         type: string
       - description: 分页
@@ -219,31 +324,11 @@ paths:
             items:
               $ref: '#/definitions/controllers.RandomUser'
             type: array
+      security:
+      - x-token: []
       summary: 获取用户广场随机用户列表
       tags:
       - User
-  /user/getRecommendSetting/{user_id}:
-    get:
-      consumes:
-      - application/json
-      description: 可通过用户ID获取用户推荐设置
-      operationId: get_recommend_settings
-      parameters:
-      - description: 用户ID
-        in: query
-        name: uid
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/models.RecommendSetting'
-      summary: 获取用户推荐设置
-      tags:
-      - Settings
   /user/getRecommendedUserList/{user_id}:
     get:
       consumes:
@@ -251,9 +336,9 @@ paths:
       description: 可通过用户ID获取推荐用户列表
       operationId: get_recommended_user_list
       parameters:
-      - description: 用户ID
-        in: query
-        name: uid
+      - description: Authorization
+        in: header
+        name: x-token
         required: true
         type: string
       produces:
@@ -265,81 +350,9 @@ paths:
             items:
               $ref: '#/definitions/controllers.RecommendedUser'
             type: array
+      security:
+      - x-token: []
       summary: 获取用户推荐用户列表
       tags:
       - User
-  /user/getSquareSetting/{user_id}:
-    get:
-      consumes:
-      - application/json
-      description: 可通过用户ID获取用户广场设置
-      operationId: get_square_settings
-      parameters:
-      - description: 用户ID
-        in: query
-        name: uid
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/models.SquareSettings'
-      summary: 获取用户广场设置
-      tags:
-      - Settings
-  /user/setRecommendSetting/{user_id}:
-    post:
-      consumes:
-      - application/json
-      description: 可设置用户广场设置
-      operationId: set_recommend_settings
-      parameters:
-      - description: 用户ID
-        in: query
-        name: uid
-        required: true
-        type: string
-      - description: 设置
-        in: body
-        name: settings
-        required: true
-        schema:
-          $ref: '#/definitions/models.RecommendSetting'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ""
-      summary: 设置用户广场设置
-      tags:
-      - Settings
-  /user/setSquareSetting/{user_id}:
-    post:
-      consumes:
-      - application/json
-      description: 可设置用户广场设置
-      operationId: set_square_settings
-      parameters:
-      - description: 用户ID
-        in: query
-        name: uid
-        required: true
-        type: string
-      - description: 设置
-        in: body
-        name: settings
-        required: true
-        schema:
-          $ref: '#/definitions/models.SquareSettings'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ""
-      summary: 设置用户广场设置
-      tags:
-      - Settings
 swagger: "2.0"

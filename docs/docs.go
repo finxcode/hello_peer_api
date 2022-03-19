@@ -20,7 +20,171 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/user/getRandomUsers/{user_id}": {
+        "/settings/getRecommendSetting/{user_id}": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可通过用户ID获取用户推荐设置",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "获取用户推荐设置",
+                "operationId": "get_recommend_settings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.RecommendSetting"
+                        }
+                    }
+                }
+            }
+        },
+        "/settings/getSquareSetting/{user_id}": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可通过用户ID获取用户广场设置",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "获取用户广场设置",
+                "operationId": "get_square_settings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.SquareSettings"
+                        }
+                    }
+                }
+            }
+        },
+        "/settings/setRecommendSetting/{user_id}": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可设置用户广场设置",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "设置用户广场设置",
+                "operationId": "set_recommend_settings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "设置",
+                        "name": "settings",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RecommendSetting"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/settings/setSquareSetting/{user_id}": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可设置用户广场设置",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "设置用户广场设置",
+                "operationId": "set_square_settings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "设置",
+                        "name": "settings",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.SquareSettings"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/getRandomUserDetails/{user_id}": {
             "get": {
                 "description": "可通过用户ID获取用户详情",
                 "consumes": [
@@ -51,8 +215,15 @@ const docTemplate = `{
                         }
                     }
                 }
-            },
+            }
+        },
+        "/user/getRandomUsers/{user_id}": {
             "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
                 "description": "可通过用户ID以及用户广场设置项获取随机用户列表",
                 "consumes": [
                     "application/json"
@@ -68,9 +239,9 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "用户ID",
-                        "name": "uid",
-                        "in": "query",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
                         "required": true
                     },
                     {
@@ -96,41 +267,13 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/getRecommendSetting/{user_id}": {
-            "get": {
-                "description": "可通过用户ID获取用户推荐设置",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Settings"
-                ],
-                "summary": "获取用户推荐设置",
-                "operationId": "get_recommend_settings",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "用户ID",
-                        "name": "uid",
-                        "in": "query",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/models.RecommendSetting"
-                        }
-                    }
-                }
-            }
-        },
         "/user/getRecommendedUserList/{user_id}": {
             "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
                 "description": "可通过用户ID获取推荐用户列表",
                 "consumes": [
                     "application/json"
@@ -146,9 +289,9 @@ const docTemplate = `{
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "用户ID",
-                        "name": "uid",
-                        "in": "query",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
                         "required": true
                     }
                 ],
@@ -161,117 +304,6 @@ const docTemplate = `{
                                 "$ref": "#/definitions/controllers.RecommendedUser"
                             }
                         }
-                    }
-                }
-            }
-        },
-        "/user/getSquareSetting/{user_id}": {
-            "get": {
-                "description": "可通过用户ID获取用户广场设置",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Settings"
-                ],
-                "summary": "获取用户广场设置",
-                "operationId": "get_square_settings",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "用户ID",
-                        "name": "uid",
-                        "in": "query",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/models.SquareSettings"
-                        }
-                    }
-                }
-            }
-        },
-        "/user/setRecommendSetting/{user_id}": {
-            "post": {
-                "description": "可设置用户广场设置",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Settings"
-                ],
-                "summary": "设置用户广场设置",
-                "operationId": "set_recommend_settings",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "用户ID",
-                        "name": "uid",
-                        "in": "query",
-                        "required": true
-                    },
-                    {
-                        "description": "设置",
-                        "name": "settings",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.RecommendSetting"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
-        "/user/setSquareSetting/{user_id}": {
-            "post": {
-                "description": "可设置用户广场设置",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Settings"
-                ],
-                "summary": "设置用户广场设置",
-                "operationId": "set_square_settings",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "用户ID",
-                        "name": "uid",
-                        "in": "query",
-                        "required": true
-                    },
-                    {
-                        "description": "设置",
-                        "name": "settings",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.SquareSettings"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
                     }
                 }
             }

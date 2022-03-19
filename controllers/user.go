@@ -52,7 +52,8 @@ type UserDetails struct {
 // @Tags User
 // @Accept application/json
 // @Produce application/json
-// @Param uid query string true "用户ID"
+// @Security x-token
+// @param x-token header string true "Authorization"
 // @Param pagination body models.Pagination true "分页"
 // @Success 200 {array} RandomUser
 // @Router /user/getRandomUsers/{user_id} [post]
@@ -69,7 +70,7 @@ func GetRandomUsersInSquare(c *gin.Context) {
 // @Produce application/json
 // @Param uid query string true "用户ID"
 // @Success 200 {object} UserDetails
-// @Router /user/getRandomUsers/{user_id} [get]
+// @Router /user/getRandomUserDetails/{user_id} [get]
 func GetRandomUserDetails(c *gin.Context) {
 	//获取用户详情
 }
@@ -81,7 +82,8 @@ func GetRandomUserDetails(c *gin.Context) {
 // @Tags User
 // @Accept application/json
 // @Produce application/json
-// @Param uid query string true "用户ID"
+// @Security x-token
+// @param x-token header string true "Authorization"
 // @Success 200 {array} RecommendedUser
 // @Router /user/getRecommendedUserList/{user_id} [get]
 func GetRecommendedUserList(c *gin.Context) {
