@@ -56,7 +56,7 @@ type UserDetails struct {
 // @param x-token header string true "Authorization"
 // @Param pagination body models.Pagination true "分页"
 // @Success 200 {array} RandomUser
-// @Router /user/getRandomUsers/{user_id} [post]
+// @Router /user/getRandomUsers [post]
 func GetRandomUsersInSquare(c *gin.Context) {
 	//获取广场随机用户接口
 }
@@ -85,7 +85,7 @@ func GetRandomUserDetails(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Success 200 {array} RecommendedUser
-// @Router /user/getRecommendedUserList/{user_id} [get]
+// @Router /user/getRecommendedUserList [get]
 func GetRecommendedUserList(c *gin.Context) {
 	//获取某一用户推荐用户列表
 }

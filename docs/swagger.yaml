@@ -382,7 +382,7 @@ paths:
       summary: 获取广场用户详情
       tags:
       - User
-  /user/getRandomUsers/{user_id}:
+  /user/getRandomUsers:
     post:
       consumes:
       - application/json
@@ -414,7 +414,7 @@ paths:
       summary: 获取用户广场随机用户列表
       tags:
       - User
-  /user/getRecommendedUserList/{user_id}:
+  /user/getRecommendedUserList:
     get:
       consumes:
       - application/json

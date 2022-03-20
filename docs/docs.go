@@ -287,7 +287,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/getRandomUsers/{user_id}": {
+        "/user/getRandomUsers": {
             "post": {
                 "security": [
                     {
@@ -337,7 +337,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/getRecommendedUserList/{user_id}": {
+        "/user/getRecommendedUserList": {
             "get": {
                 "security": [
                     {

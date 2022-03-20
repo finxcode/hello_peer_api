@@ -280,7 +280,7 @@
                 }
             }
         },
-        "/user/getRandomUsers/{user_id}": {
+        "/user/getRandomUsers": {
             "post": {
                 "security": [
                     {
@@ -330,7 +330,7 @@
                 }
             }
         },
-        "/user/getRecommendedUserList/{user_id}": {
+        "/user/getRecommendedUserList": {
             "get": {
                 "security": [
                     {
