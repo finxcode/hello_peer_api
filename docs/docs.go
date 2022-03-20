@@ -20,7 +20,77 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/settings/getRecommendSetting/{user_id}": {
+        "/auth/authlogin": {
+            "post": {
+                "description": "通过传递微信登录code以及getUserProfile返回字段换取用户token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "授权用户登录",
+                "operationId": "authlogin",
+                "parameters": [
+                    {
+                        "description": "微信登录code以及getUserProfile返回字段",
+                        "name": "code",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UserProfileForm"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Token"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/autologin": {
+            "post": {
+                "description": "通过传递微信登录code换取用户token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "未授权用户登录",
+                "operationId": "autologin",
+                "parameters": [
+                    {
+                        "description": "微信登录code",
+                        "name": "code",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.AutoLogin"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Token"
+                        }
+                    }
+                }
+            }
+        },
+        "/settings/getRecommendSetting": {
             "get": {
                 "security": [
                     {
@@ -58,7 +128,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/settings/getSquareSetting/{user_id}": {
+        "/settings/getSquareSetting": {
             "get": {
                 "security": [
                     {
@@ -96,7 +166,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/settings/setRecommendSetting/{user_id}": {
+        "/settings/setRecommendSetting": {
             "post": {
                 "security": [
                     {
@@ -140,7 +210,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/settings/setSquareSetting/{user_id}": {
+        "/settings/setSquareSetting": {
             "post": {
                 "security": [
                     {
@@ -443,13 +513,13 @@ const docTemplate = `{
                         " www.imgUrl2.com"
                     ]
                 },
+                "location": {
+                    "type": "string",
+                    "example": "深圳"
+                },
                 "occupation": {
                     "type": "string",
                     "example": "平面设计师"
-                },
-                "resident": {
-                    "type": "string",
-                    "example": "深圳"
                 },
                 "selfDesc": {
                     "type": "string",
@@ -470,6 +540,15 @@ const docTemplate = `{
                 "weight": {
                     "type": "string",
                     "example": "43kg"
+                }
+            }
+        },
+        "models.AutoLogin": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "example": "xtdad-fdfdsf"
                 }
             }
         },
@@ -529,6 +608,52 @@ const docTemplate = `{
                 "location": {
                     "type": "string",
                     "example": "不限"
+                }
+            }
+        },
+        "models.Token": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string",
+                    "example": "cdaefj93sds-eqedsdsdsa-3sadasdsss"
+                },
+                "expiresIn": {
+                    "type": "integer",
+                    "example": 186624000
+                },
+                "tokenType": {
+                    "type": "string",
+                    "example": "bearer"
+                }
+            }
+        },
+        "models.UserProfileForm": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "example": "xtdad-fdfdsf"
+                },
+                "encryptedData": {
+                    "type": "string",
+                    "example": "7SfFtStsHqKZYhbIkke3BH2bCRzGD15T0jEiUtuksrl9lDeHm9LsPmswJymBXuinPCiXkZhd/uq7s7pACTvbWuvvoKEwz5fAJ6Vr9bTx79XVxiIN4r+Fwm6QHO9DjPkFrxTGAZvMYLyH6IOyOV/nmmlMoBM3G4peSnBi1qCYukwlyCMNp67lb93wSiPAoI7eRhYYw8ayPTsZ/MAJ9CBBUiCwM5aFOUWrMKNTikeq7YVjNCv7KCz0LJTrMKda0YMS0J/034L8x9vJ1OnIkxlWVMQEy/f55IfWVHI1I1fSKd5azzyVKXCbWDpU0PLJnU8XM/l4L7ZUlDOcRMR5KQVGhB9rIjVkykdXUPQK87v8lpnitslK06XceOJqDjK6mRkhJWOYpFUozZa6idFV6xmLZX8bkBsLxczzp1h/satEH7rIz3nKbxd3O1c+3dI2soSt8qFtaumcGdwhenTm+at0gxccAp8JD8PZiB5ZDLTofZIQ4RmI004SIExYUDZUje9mZO+3aC8McVwzrEyK7NKD/NZ5/dYPgDRwzBl1Vm99niY="
+                },
+                "iv": {
+                    "type": "string",
+                    "example": "z3tGYrgMcbLzd0qXqZuduQ=="
+                },
+                "rawData": {
+                    "type": "string",
+                    "example": ""
+                },
+                "signature": {
+                    "type": "string",
+                    "example": ""
+                },
+                "userInfo": {
+                    "type": "string",
+                    "example": ""
                 }
             }
         }

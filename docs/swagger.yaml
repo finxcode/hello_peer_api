@@ -97,11 +97,11 @@ definitions:
         items:
           type: string
         type: array
+      location:
+        example: 深圳
+        type: string
       occupation:
         example: 平面设计师
-        type: string
-      resident:
-        example: 深圳
         type: string
       selfDesc:
         example: 自我描述
@@ -117,6 +117,12 @@ definitions:
         type: string
       weight:
         example: 43kg
+        type: string
+    type: object
+  models.AutoLogin:
+    properties:
+      code:
+        example: xtdad-fdfdsf
         type: string
     type: object
   models.Pagination:
@@ -161,6 +167,39 @@ definitions:
         example: 不限
         type: string
     type: object
+  models.Token:
+    properties:
+      accessToken:
+        example: cdaefj93sds-eqedsdsdsa-3sadasdsss
+        type: string
+      expiresIn:
+        example: 186624000
+        type: integer
+      tokenType:
+        example: bearer
+        type: string
+    type: object
+  models.UserProfileForm:
+    properties:
+      code:
+        example: xtdad-fdfdsf
+        type: string
+      encryptedData:
+        example: 7SfFtStsHqKZYhbIkke3BH2bCRzGD15T0jEiUtuksrl9lDeHm9LsPmswJymBXuinPCiXkZhd/uq7s7pACTvbWuvvoKEwz5fAJ6Vr9bTx79XVxiIN4r+Fwm6QHO9DjPkFrxTGAZvMYLyH6IOyOV/nmmlMoBM3G4peSnBi1qCYukwlyCMNp67lb93wSiPAoI7eRhYYw8ayPTsZ/MAJ9CBBUiCwM5aFOUWrMKNTikeq7YVjNCv7KCz0LJTrMKda0YMS0J/034L8x9vJ1OnIkxlWVMQEy/f55IfWVHI1I1fSKd5azzyVKXCbWDpU0PLJnU8XM/l4L7ZUlDOcRMR5KQVGhB9rIjVkykdXUPQK87v8lpnitslK06XceOJqDjK6mRkhJWOYpFUozZa6idFV6xmLZX8bkBsLxczzp1h/satEH7rIz3nKbxd3O1c+3dI2soSt8qFtaumcGdwhenTm+at0gxccAp8JD8PZiB5ZDLTofZIQ4RmI004SIExYUDZUje9mZO+3aC8McVwzrEyK7NKD/NZ5/dYPgDRwzBl1Vm99niY=
+        type: string
+      iv:
+        example: z3tGYrgMcbLzd0qXqZuduQ==
+        type: string
+      rawData:
+        example: ""
+        type: string
+      signature:
+        example: ""
+        type: string
+      userInfo:
+        example: ""
+        type: string
+    type: object
 host: 1.12.243.73:8686
 info:
   contact:
@@ -171,7 +210,53 @@ info:
   title: Hello Peer API
   version: "0.1"
 paths:
-  /settings/getRecommendSetting/{user_id}:
+  /auth/authlogin:
+    post:
+      consumes:
+      - application/json
+      description: 通过传递微信登录code以及getUserProfile返回字段换取用户token
+      operationId: authlogin
+      parameters:
+      - description: 微信登录code以及getUserProfile返回字段
+        in: body
+        name: code
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserProfileForm'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Token'
+      summary: 授权用户登录
+      tags:
+      - Auth
+  /auth/autologin:
+    post:
+      consumes:
+      - application/json
+      description: 通过传递微信登录code换取用户token
+      operationId: autologin
+      parameters:
+      - description: 微信登录code
+        in: body
+        name: code
+        required: true
+        schema:
+          $ref: '#/definitions/models.AutoLogin'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Token'
+      summary: 未授权用户登录
+      tags:
+      - Auth
+  /settings/getRecommendSetting:
     get:
       consumes:
       - application/json
@@ -195,7 +280,7 @@ paths:
       summary: 获取用户推荐设置
       tags:
       - Settings
-  /settings/getSquareSetting/{user_id}:
+  /settings/getSquareSetting:
     get:
       consumes:
       - application/json
@@ -219,7 +304,7 @@ paths:
       summary: 获取用户广场设置
       tags:
       - Settings
-  /settings/setRecommendSetting/{user_id}:
+  /settings/setRecommendSetting:
     post:
       consumes:
       - application/json
@@ -247,7 +332,7 @@ paths:
       summary: 设置用户广场设置
       tags:
       - Settings
-  /settings/setSquareSetting/{user_id}:
+  /settings/setSquareSetting:
     post:
       consumes:
       - application/json
