@@ -377,6 +377,94 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/user/setUserBasicInfo": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可通过用户token设置用户基础信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "设置用户基础信息",
+                "operationId": "set_user_basic_info",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "用户基础信息",
+                        "name": "basicInfo",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.BasicInfo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/setUserGender": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可通过用户token设置用户性别",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "设置用户性别",
+                "operationId": "set_user_gender",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "用户性别",
+                        "name": "gender",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.UserGender"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -552,6 +640,51 @@ const docTemplate = `{
                 }
             }
         },
+        "models.BasicInfo": {
+            "type": "object",
+            "properties": {
+                "birth_day": {
+                    "type": "string",
+                    "example": "2010-10-09"
+                },
+                "constellation": {
+                    "type": "string",
+                    "example": "白羊座"
+                },
+                "education": {
+                    "type": "string",
+                    "example": "本科"
+                },
+                "gender": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "height": {
+                    "type": "number",
+                    "example": 178
+                },
+                "hometown": {
+                    "type": "string",
+                    "example": "重庆"
+                },
+                "location": {
+                    "type": "string",
+                    "example": "深圳"
+                },
+                "marriage": {
+                    "type": "string",
+                    "example": "未婚"
+                },
+                "occupation": {
+                    "type": "string",
+                    "example": "设计师"
+                },
+                "weight": {
+                    "type": "number",
+                    "example": 56.5
+                }
+            }
+        },
         "models.Pagination": {
             "type": "object",
             "properties": {
@@ -568,11 +701,11 @@ const docTemplate = `{
         "models.RecommendSetting": {
             "type": "object",
             "properties": {
-                "ageMax": {
+                "age_Max": {
                     "type": "integer",
                     "example": 40
                 },
-                "ageMin": {
+                "age_Min": {
                     "type": "integer",
                     "example": 22
                 },
@@ -588,7 +721,7 @@ const docTemplate = `{
                     "type": "string",
                     "example": "只要同城"
                 },
-                "petLover": {
+                "pet_Lover": {
                     "type": "string",
                     "example": "喜欢就行"
                 },
@@ -625,6 +758,15 @@ const docTemplate = `{
                 "tokenType": {
                     "type": "string",
                     "example": "bearer"
+                }
+            }
+        },
+        "models.UserGender": {
+            "type": "object",
+            "properties": {
+                "gender": {
+                    "type": "integer",
+                    "example": 1
                 }
             }
         },

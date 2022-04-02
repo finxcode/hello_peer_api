@@ -125,6 +125,39 @@ definitions:
         example: xtdad-fdfdsf
         type: string
     type: object
+  models.BasicInfo:
+    properties:
+      birth_day:
+        example: "2010-10-09"
+        type: string
+      constellation:
+        example: 白羊座
+        type: string
+      education:
+        example: 本科
+        type: string
+      gender:
+        example: 1
+        type: integer
+      height:
+        example: 178
+        type: number
+      hometown:
+        example: 重庆
+        type: string
+      location:
+        example: 深圳
+        type: string
+      marriage:
+        example: 未婚
+        type: string
+      occupation:
+        example: 设计师
+        type: string
+      weight:
+        example: 56.5
+        type: number
+    type: object
   models.Pagination:
     properties:
       limit:
@@ -136,10 +169,10 @@ definitions:
     type: object
   models.RecommendSetting:
     properties:
-      ageMax:
+      age_Max:
         example: 40
         type: integer
-      ageMin:
+      age_Min:
         example: 22
         type: integer
       gender:
@@ -151,7 +184,7 @@ definitions:
       location:
         example: 只要同城
         type: string
-      petLover:
+      pet_Lover:
         example: 喜欢就行
         type: string
       tags:
@@ -178,6 +211,12 @@ definitions:
       tokenType:
         example: bearer
         type: string
+    type: object
+  models.UserGender:
+    properties:
+      gender:
+        example: 1
+        type: integer
     type: object
   models.UserProfileForm:
     properties:
@@ -438,6 +477,62 @@ paths:
       security:
       - x-token: []
       summary: 获取用户推荐用户列表
+      tags:
+      - User
+  /user/setUserBasicInfo:
+    post:
+      consumes:
+      - application/json
+      description: 可通过用户token设置用户基础信息
+      operationId: set_user_basic_info
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 用户基础信息
+        in: body
+        name: basicInfo
+        required: true
+        schema:
+          $ref: '#/definitions/models.BasicInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户基础信息
+      tags:
+      - User
+  /user/setUserGender:
+    post:
+      consumes:
+      - application/json
+      description: 可通过用户token设置用户性别
+      operationId: set_user_gender
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 用户性别
+        in: body
+        name: gender
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserGender'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户性别
       tags:
       - User
 swagger: "2.0"

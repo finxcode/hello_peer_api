@@ -89,3 +89,34 @@ func GetRandomUserDetails(c *gin.Context) {
 func GetRecommendedUserList(c *gin.Context) {
 	//获取某一用户推荐用户列表
 }
+
+//SetUserGender
+// @Summary 设置用户性别
+// @Description 可通过用户token设置用户性别
+// @ID set_user_gender
+// @Tags User
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param gender body models.UserGender true "用户性别"
+// @Success 200
+// @Router /user/setUserGender [post]
+func SetUserGender(c *gin.Context) {
+}
+
+//SetUserBasicInfo
+// @Summary 设置用户基础信息
+// @Description 可通过用户token设置用户基础信息
+// @ID set_user_basic_info
+// @Tags User
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param basicInfo body models.BasicInfo true "用户基础信息"
+// @Success 200
+// @Router /user/setUserBasicInfo [post]
+func SetUserBasicInfo(c *gin.Context) {
+
+}
