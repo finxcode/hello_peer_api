@@ -120,3 +120,19 @@ func SetUserGender(c *gin.Context) {
 func SetUserBasicInfo(c *gin.Context) {
 
 }
+
+// SetUserAvatar
+// @Summary 设置用户头像
+// @Description 用户可设置头像
+// @ID set_user_avatar
+// @Tags User
+// @Accept mpfd
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @param content formData file true "头像文件"
+// @Success 200
+// @Router /user/setUserAvatar [post]
+func SetUserAvatar(c *gin.Context) {
+	//设置用户头像
+}
