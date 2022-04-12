@@ -136,3 +136,19 @@ func SetUserBasicInfo(c *gin.Context) {
 func SetUserAvatar(c *gin.Context) {
 	//设置用户头像
 }
+
+// SetUserCover
+// @Summary 设置用户封面图
+// @Description 用户可设置封面图
+// @ID set_user_cover
+// @Tags User
+// @Accept mpfd
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @param content formData file true "封面文件"
+// @Success 200
+// @Router /user/setUserCover [post]
+func SetUserCover(c *gin.Context) {
+	//设置用户头像
+}
