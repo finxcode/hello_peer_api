@@ -479,33 +479,6 @@ paths:
       summary: 获取用户推荐用户列表
       tags:
       - User
-  /user/setUserAvatar:
-    post:
-      consumes:
-      - multipart/form-data
-      description: 用户可设置头像
-      operationId: set_user_avatar
-      parameters:
-      - description: Authorization
-        in: header
-        name: x-token
-        required: true
-        type: string
-      - description: 头像文件
-        in: formData
-        name: content
-        required: true
-        type: file
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ""
-      security:
-      - x-token: []
-      summary: 设置用户头像
-      tags:
-      - User
   /user/setUserBasicInfo:
     post:
       consumes:
@@ -534,33 +507,6 @@ paths:
       summary: 设置用户基础信息
       tags:
       - User
-  /user/setUserCover:
-    post:
-      consumes:
-      - multipart/form-data
-      description: 用户可设置封面图
-      operationId: set_user_cover
-      parameters:
-      - description: Authorization
-        in: header
-        name: x-token
-        required: true
-        type: string
-      - description: 封面文件
-        in: formData
-        name: content
-        required: true
-        type: file
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: ""
-      security:
-      - x-token: []
-      summary: 设置用户封面图
-      tags:
-      - User
   /user/setUserGender:
     post:
       consumes:
@@ -587,6 +533,60 @@ paths:
       security:
       - x-token: []
       summary: 设置用户性别
+      tags:
+      - User
+  /user/upload/setUserAvatar:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 用户可设置头像
+      operationId: set_user_avatar
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 头像文件
+        in: formData
+        name: content
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户头像
+      tags:
+      - User
+  /user/upload/setUserCover:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 用户可设置封面图
+      operationId: set_user_cover
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 封面文件
+        in: formData
+        name: content
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户封面图
       tags:
       - User
 swagger: "2.0"

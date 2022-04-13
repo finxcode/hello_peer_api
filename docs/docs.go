@@ -378,48 +378,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/setUserAvatar": {
-            "post": {
-                "security": [
-                    {
-                        "x-token": []
-                    }
-                ],
-                "description": "用户可设置头像",
-                "consumes": [
-                    "multipart/form-data"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "summary": "设置用户头像",
-                "operationId": "set_user_avatar",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Authorization",
-                        "name": "x-token",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "file",
-                        "description": "头像文件",
-                        "name": "content",
-                        "in": "formData",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
         "/user/setUserBasicInfo": {
             "post": {
                 "security": [
@@ -464,48 +422,6 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/setUserCover": {
-            "post": {
-                "security": [
-                    {
-                        "x-token": []
-                    }
-                ],
-                "description": "用户可设置封面图",
-                "consumes": [
-                    "multipart/form-data"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "User"
-                ],
-                "summary": "设置用户封面图",
-                "operationId": "set_user_cover",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Authorization",
-                        "name": "x-token",
-                        "in": "header",
-                        "required": true
-                    },
-                    {
-                        "type": "file",
-                        "description": "封面文件",
-                        "name": "content",
-                        "in": "formData",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    }
-                }
-            }
-        },
         "/user/setUserGender": {
             "post": {
                 "security": [
@@ -541,6 +457,90 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.UserGender"
                         }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/upload/setUserAvatar": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "用户可设置头像",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "设置用户头像",
+                "operationId": "set_user_avatar",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "头像文件",
+                        "name": "content",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/upload/setUserCover": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "用户可设置封面图",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "设置用户封面图",
+                "operationId": "set_user_cover",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "封面文件",
+                        "name": "content",
+                        "in": "formData",
+                        "required": true
                     }
                 ],
                 "responses": {

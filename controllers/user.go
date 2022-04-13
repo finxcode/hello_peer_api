@@ -132,7 +132,7 @@ func SetUserBasicInfo(c *gin.Context) {
 // @param x-token header string true "Authorization"
 // @param content formData file true "头像文件"
 // @Success 200
-// @Router /user/setUserAvatar [post]
+// @Router /user/upload/setUserAvatar [post]
 func SetUserAvatar(c *gin.Context) {
 	//设置用户头像
 }
@@ -148,7 +148,7 @@ func SetUserAvatar(c *gin.Context) {
 // @param x-token header string true "Authorization"
 // @param content formData file true "封面文件"
 // @Success 200
-// @Router /user/setUserCover [post]
+// @Router /user/upload/setUserCover [post]
 func SetUserCover(c *gin.Context) {
 	//设置用户头像
 }
