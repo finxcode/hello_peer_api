@@ -628,7 +628,7 @@ const docTemplate = `{
                 },
                 "coverImageUrl": {
                     "type": "string",
-                    "example": "www.coverUrl.com"
+                    "example": "cover.png"
                 },
                 "lat": {
                     "type": "number",
@@ -665,7 +665,7 @@ const docTemplate = `{
                 },
                 "coverImageUrl": {
                     "type": "string",
-                    "example": "www.coverUrl.com"
+                    "example": "cover.png"
                 },
                 "images": {
                     "type": "array",
@@ -673,7 +673,8 @@ const docTemplate = `{
                         "type": "string"
                     },
                     "example": [
-                        "www.imgUrl1.com www.imgUrl2.com"
+                        "img1.jpg",
+                        "img2.jpg"
                     ]
                 },
                 "lat": {
@@ -723,7 +724,7 @@ const docTemplate = `{
                 },
                 "cover_Image": {
                     "type": "string",
-                    "example": "www.imgUrl1.com"
+                    "example": "cover.png"
                 },
                 "declaration": {
                     "type": "string",
@@ -751,8 +752,8 @@ const docTemplate = `{
                         "type": "string"
                     },
                     "example": [
-                        "www.imgUrl1.com",
-                        "www.imgUrl2.com"
+                        "img1.jpg",
+                        "img2.jpg"
                     ]
                 },
                 "location": {

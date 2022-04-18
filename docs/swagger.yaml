@@ -6,7 +6,7 @@ definitions:
         example: 25
         type: integer
       coverImageUrl:
-        example: www.coverUrl.com
+        example: cover.png
         type: string
       lat:
         example: 22.51
@@ -33,11 +33,12 @@ definitions:
         example: 25
         type: integer
       coverImageUrl:
-        example: www.coverUrl.com
+        example: cover.png
         type: string
       images:
         example:
-        - www.imgUrl1.com www.imgUrl2.com
+        - img1.jpg
+        - img2.jpg
         items:
           type: string
         type: array
@@ -75,7 +76,7 @@ definitions:
         example: 处女座
         type: string
       cover_Image:
-        example: www.imgUrl1.com
+        example: cover.png
         type: string
       declaration:
         example: 交友宣言
@@ -94,8 +95,8 @@ definitions:
         type: string
       images:
         example:
-        - www.imgUrl1.com
-        - www.imgUrl2.com
+        - img1.jpg
+        - img2.jpg
         items:
           type: string
         type: array

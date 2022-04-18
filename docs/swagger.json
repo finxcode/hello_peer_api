@@ -621,7 +621,7 @@
                 },
                 "coverImageUrl": {
                     "type": "string",
-                    "example": "www.coverUrl.com"
+                    "example": "cover.png"
                 },
                 "lat": {
                     "type": "number",
@@ -658,7 +658,7 @@
                 },
                 "coverImageUrl": {
                     "type": "string",
-                    "example": "www.coverUrl.com"
+                    "example": "cover.png"
                 },
                 "images": {
                     "type": "array",
@@ -666,7 +666,8 @@
                         "type": "string"
                     },
                     "example": [
-                        "www.imgUrl1.com www.imgUrl2.com"
+                        "img1.jpg",
+                        "img2.jpg"
                     ]
                 },
                 "lat": {
@@ -716,7 +717,7 @@
                 },
                 "cover_Image": {
                     "type": "string",
-                    "example": "www.imgUrl1.com"
+                    "example": "cover.png"
                 },
                 "declaration": {
                     "type": "string",
@@ -744,8 +745,8 @@
                         "type": "string"
                     },
                     "example": [
-                        "www.imgUrl1.com",
-                        "www.imgUrl2.com"
+                        "img1.jpg",
+                        "img2.jpg"
                     ]
                 },
                 "location": {

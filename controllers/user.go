@@ -10,7 +10,7 @@ type RandomUser struct {
 	Lng           float32 `example:"113.95"`
 	Lat           float32 `example:"22.51"`
 	Location      string  `example:"南山区"`
-	CoverImageUrl string  `example:"www.coverUrl.com"`
+	CoverImageUrl string  `example:"cover.png"`
 }
 
 type RecommendedUser struct {
@@ -22,9 +22,9 @@ type RecommendedUser struct {
 	Lat           float32  `example:"22.51"`
 	Location      string   `example:"南山区"`
 	Verified      bool     `example:"true"`
-	CoverImageUrl string   `example:"www.coverUrl.com"`
+	CoverImageUrl string   `example:"cover.png"`
 	Tags          string   `example:"猫控 读书达人 电影爱好者"`
-	Images        []string `example:"www.imgUrl1.com www.imgUrl2.com"`
+	Images        []string `example:"img1.jpg,img2.jpg"`
 }
 
 type UserDetails struct {
@@ -42,8 +42,8 @@ type UserDetails struct {
 	Declaration   string   `example:"交友宣言"`
 	TheOne        string   `example:"希望另一半的样子"`
 	Tags          []string `example:"猫控,读书达人,电影爱好者,旅行者"`
-	Images        []string `example:"www.imgUrl1.com,www.imgUrl2.com"`
-	Cover_Image   string   `example:"www.imgUrl1.com"`
+	Images        []string `example:"img1.jpg,img2.jpg"`
+	Cover_Image   string   `example:"cover.png"`
 }
 
 // GetRandomUsersInSquare
