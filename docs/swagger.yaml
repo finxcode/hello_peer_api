@@ -37,8 +37,7 @@ definitions:
         type: string
       images:
         example:
-        - www.imgUrl1.com
-        - ' www.imgUrl2.com'
+        - www.imgUrl1.com www.imgUrl2.com
         items:
           type: string
         type: array
@@ -75,6 +74,9 @@ definitions:
       constellation:
         example: 处女座
         type: string
+      cover_Image:
+        example: www.imgUrl1.com
+        type: string
       declaration:
         example: 交友宣言
         type: string
@@ -93,7 +95,7 @@ definitions:
       images:
         example:
         - www.imgUrl1.com
-        - ' www.imgUrl2.com'
+        - www.imgUrl2.com
         items:
           type: string
         type: array
@@ -107,8 +109,14 @@ definitions:
         example: 自我描述
         type: string
       tags:
-        example: 猫控 读书达人 电影爱好者 旅行者
-        type: string
+        example:
+        - 猫控
+        - 读书达人
+        - 电影爱好者
+        - 旅行者
+        items:
+          type: string
+        type: array
       theOne:
         example: 希望另一半的样子
         type: string
@@ -295,6 +303,24 @@ paths:
       summary: 未授权用户登录
       tags:
       - Auth
+  /images/{file_name}:
+    get:
+      description: 获取图片
+      operationId: get_image
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+      security:
+      - x-token: []
+      summary: 获取图片
+      tags:
+      - Util
   /settings/getRecommendSetting:
     get:
       consumes:
@@ -477,6 +503,30 @@ paths:
       security:
       - x-token: []
       summary: 获取用户推荐用户列表
+      tags:
+      - User
+  /user/getUserDetails:
+    get:
+      consumes:
+      - application/json
+      description: 可获取用户详情
+      operationId: get_user_details
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.UserDetails'
+      security:
+      - x-token: []
+      summary: 获取用户详情
       tags:
       - User
   /user/setUserBasicInfo:

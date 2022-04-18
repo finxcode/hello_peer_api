@@ -24,7 +24,7 @@ type RecommendedUser struct {
 	Verified      bool     `example:"true"`
 	CoverImageUrl string   `example:"www.coverUrl.com"`
 	Tags          string   `example:"猫控 读书达人 电影爱好者"`
-	Images        []string `example:"www.imgUrl1.com, www.imgUrl2.com"`
+	Images        []string `example:"www.imgUrl1.com www.imgUrl2.com"`
 }
 
 type UserDetails struct {
@@ -41,8 +41,9 @@ type UserDetails struct {
 	Hobbies       string   `example:"兴趣爱好"`
 	Declaration   string   `example:"交友宣言"`
 	TheOne        string   `example:"希望另一半的样子"`
-	Tags          string   `example:"猫控 读书达人 电影爱好者 旅行者"`
-	Images        []string `example:"www.imgUrl1.com, www.imgUrl2.com"`
+	Tags          []string `example:"猫控,读书达人,电影爱好者,旅行者"`
+	Images        []string `example:"www.imgUrl1.com,www.imgUrl2.com"`
+	Cover_Image   string   `example:"www.imgUrl1.com"`
 }
 
 // GetRandomUsersInSquare
@@ -151,4 +152,32 @@ func SetUserAvatar(c *gin.Context) {
 // @Router /user/upload/setUserCover [post]
 func SetUserCover(c *gin.Context) {
 	//设置用户头像
+}
+
+// GetUserDetails
+// @Summary 获取用户详情
+// @Description 可获取用户详情
+// @ID get_user_details
+// @Tags User
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 200 {object} UserDetails
+// @Router /user/getUserDetails [get]
+func GetUserDetails(c *gin.Context) {
+	//获取用户详情
+}
+
+// GetImage
+// @Summary 获取图片
+// @Description 获取图片
+// @ID get_image
+// @Tags Util
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 200
+// @Router /images/{file_name} [get]
+func GetImage(c *gin.Context) {
+	// 获取图片
 }

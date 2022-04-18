@@ -90,6 +90,35 @@ const docTemplate = `{
                 }
             }
         },
+        "/images/{file_name}": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "获取图片",
+                "tags": [
+                    "Util"
+                ],
+                "summary": "获取图片",
+                "operationId": "get_image",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/settings/getRecommendSetting": {
             "get": {
                 "security": [
@@ -378,6 +407,44 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/getUserDetails": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可获取用户详情",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "获取用户详情",
+                "operationId": "get_user_details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controllers.UserDetails"
+                        }
+                    }
+                }
+            }
+        },
         "/user/setUserBasicInfo": {
             "post": {
                 "security": [
@@ -606,8 +673,7 @@ const docTemplate = `{
                         "type": "string"
                     },
                     "example": [
-                        "www.imgUrl1.com",
-                        " www.imgUrl2.com"
+                        "www.imgUrl1.com www.imgUrl2.com"
                     ]
                 },
                 "lat": {
@@ -655,6 +721,10 @@ const docTemplate = `{
                     "type": "string",
                     "example": "处女座"
                 },
+                "cover_Image": {
+                    "type": "string",
+                    "example": "www.imgUrl1.com"
+                },
                 "declaration": {
                     "type": "string",
                     "example": "交友宣言"
@@ -682,7 +752,7 @@ const docTemplate = `{
                     },
                     "example": [
                         "www.imgUrl1.com",
-                        " www.imgUrl2.com"
+                        "www.imgUrl2.com"
                     ]
                 },
                 "location": {
@@ -698,8 +768,16 @@ const docTemplate = `{
                     "example": "自我描述"
                 },
                 "tags": {
-                    "type": "string",
-                    "example": "猫控 读书达人 电影爱好者 旅行者"
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "猫控",
+                        "读书达人",
+                        "电影爱好者",
+                        "旅行者"
+                    ]
                 },
                 "theOne": {
                     "type": "string",
