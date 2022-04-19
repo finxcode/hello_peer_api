@@ -72,11 +72,14 @@ definitions:
       age:
         example: 25
         type: integer
+      birthday:
+        example: "1988-10-2"
+        type: string
       constellation:
         example: 处女座
         type: string
       cover_Image:
-        example: cover.png
+        example: http://x.x.x.x:x/images/cover.png
         type: string
       declaration:
         example: 交友宣言
@@ -84,6 +87,9 @@ definitions:
       education:
         example: 本科
         type: string
+      gender:
+        example: 1
+        type: integer
       height:
         example: 165cm
         type: string
@@ -95,16 +101,25 @@ definitions:
         type: string
       images:
         example:
-        - img1.jpg
-        - img2.jpg
+        - http://x.x.x.x:x/images/img1.jpg
+        - http://x.x.x.x:x/images/img2.jpg
         items:
           type: string
         type: array
+      income:
+        example: 15-25w
+        type: string
       location:
         example: 深圳
         type: string
+      marriage:
+        example: 未婚
+        type: string
       occupation:
         example: 平面设计师
+        type: string
+      purpose:
+        example: 交友
         type: string
       selfDesc:
         example: 自我描述

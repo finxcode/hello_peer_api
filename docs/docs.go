@@ -718,13 +718,17 @@ const docTemplate = `{
                     "type": "integer",
                     "example": 25
                 },
+                "birthday": {
+                    "type": "string",
+                    "example": "1988-10-2"
+                },
                 "constellation": {
                     "type": "string",
                     "example": "处女座"
                 },
                 "cover_Image": {
                     "type": "string",
-                    "example": "cover.png"
+                    "example": "http://x.x.x.x:x/images/cover.png"
                 },
                 "declaration": {
                     "type": "string",
@@ -733,6 +737,10 @@ const docTemplate = `{
                 "education": {
                     "type": "string",
                     "example": "本科"
+                },
+                "gender": {
+                    "type": "integer",
+                    "example": 1
                 },
                 "height": {
                     "type": "string",
@@ -752,17 +760,29 @@ const docTemplate = `{
                         "type": "string"
                     },
                     "example": [
-                        "img1.jpg",
-                        "img2.jpg"
+                        "http://x.x.x.x:x/images/img1.jpg",
+                        "http://x.x.x.x:x/images/img2.jpg"
                     ]
+                },
+                "income": {
+                    "type": "string",
+                    "example": "15-25w"
                 },
                 "location": {
                     "type": "string",
                     "example": "深圳"
                 },
+                "marriage": {
+                    "type": "string",
+                    "example": "未婚"
+                },
                 "occupation": {
                     "type": "string",
                     "example": "平面设计师"
+                },
+                "purpose": {
+                    "type": "string",
+                    "example": "交友"
                 },
                 "selfDesc": {
                     "type": "string",

@@ -42,8 +42,13 @@ type UserDetails struct {
 	Declaration   string   `example:"交友宣言"`
 	TheOne        string   `example:"希望另一半的样子"`
 	Tags          []string `example:"猫控,读书达人,电影爱好者,旅行者"`
-	Images        []string `example:"img1.jpg,img2.jpg"`
-	Cover_Image   string   `example:"cover.png"`
+	Images        []string `example:"http://x.x.x.x:x/images/img1.jpg,http://x.x.x.x:x/images/img2.jpg"`
+	Cover_Image   string   `example:"http://x.x.x.x:x/images/cover.png"`
+	Birthday      string   `json:"birthday" example:"1988-10-2"`
+	Purpose       string   `json:"purpose" example:"交友"`
+	Gender        int      `json:"gender" example:"1"`
+	Marriage      string   `json:"marriage" example:"未婚"`
+	Income        string   `json:"income" example:"15-25w"`
 }
 
 // GetRandomUsersInSquare
