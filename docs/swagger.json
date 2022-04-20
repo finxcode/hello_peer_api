@@ -957,16 +957,8 @@
                     "example": "自我描述"
                 },
                 "tags": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "example": [
-                        "猫控",
-                        "读书达人",
-                        "电影爱好者",
-                        "旅行者"
-                    ]
+                    "type": "string",
+                    "example": "猫控 读书达人 电影爱好者 旅行者"
                 },
                 "theOne": {
                     "type": "string",

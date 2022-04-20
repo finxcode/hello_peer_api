@@ -191,14 +191,8 @@ definitions:
         example: 自我描述
         type: string
       tags:
-        example:
-        - 猫控
-        - 读书达人
-        - 电影爱好者
-        - 旅行者
-        items:
-          type: string
-        type: array
+        example: 猫控 读书达人 电影爱好者 旅行者
+        type: string
       theOne:
         example: 希望另一半的样子
         type: string
