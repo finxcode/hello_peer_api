@@ -181,6 +181,22 @@ func SetUserCover(c *gin.Context) {
 	//设置用户头像
 }
 
+// SetUserImage
+// @Summary 设置用户图片
+// @Description 用户可上传图片
+// @ID set_user_image
+// @Tags User
+// @Accept mpfd
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @param content formData file true "用户图片"
+// @Success 200
+// @Router /user/upload/setUserImage [post]
+func SetUserImage(c *gin.Context) {
+	//设置用户头像
+}
+
 // GetUserDetails
 // @Summary 获取用户详情
 // @Description 可获取用户详情
