@@ -870,7 +870,7 @@ const docTemplate = `{
                     "type": "string",
                     "example": "交友"
                 },
-                "selfDesc": {
+                "self_Desc": {
                     "type": "string",
                     "example": "自我描述"
                 },
@@ -886,7 +886,7 @@ const docTemplate = `{
                         "旅行者"
                     ]
                 },
-                "theOne": {
+                "the_One": {
                     "type": "string",
                     "example": "希望另一半的样子"
                 },
@@ -959,7 +959,7 @@ const docTemplate = `{
                     "type": "string",
                     "example": "交友"
                 },
-                "selfDesc": {
+                "self_Desc": {
                     "type": "string",
                     "example": "自我描述"
                 },
@@ -967,7 +967,7 @@ const docTemplate = `{
                     "type": "string",
                     "example": "猫控 读书达人 电影爱好者 旅行者"
                 },
-                "theOne": {
+                "the_One": {
                     "type": "string",
                     "example": "希望另一半的样子"
                 },

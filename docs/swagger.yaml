@@ -121,7 +121,7 @@ definitions:
       purpose:
         example: 交友
         type: string
-      selfDesc:
+      self_Desc:
         example: 自我描述
         type: string
       tags:
@@ -133,7 +133,7 @@ definitions:
         items:
           type: string
         type: array
-      theOne:
+      the_One:
         example: 希望另一半的样子
         type: string
       userName:
@@ -187,13 +187,13 @@ definitions:
       purpose:
         example: 交友
         type: string
-      selfDesc:
+      self_Desc:
         example: 自我描述
         type: string
       tags:
         example: 猫控 读书达人 电影爱好者 旅行者
         type: string
-      theOne:
+      the_One:
         example: 希望另一半的样子
         type: string
       userName:
