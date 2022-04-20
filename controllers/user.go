@@ -37,10 +37,10 @@ type UserDetails struct {
 	Education     string   `example:"本科"`
 	Location      string   `example:"深圳"`
 	Hometown      string   `example:"湖南长沙"`
-	SelfDesc      string   `example:"自我描述"`
+	Self_Desc     string   `example:"自我描述"`
 	Hobbies       string   `example:"兴趣爱好"`
 	Declaration   string   `example:"交友宣言"`
-	TheOne        string   `example:"希望另一半的样子"`
+	The_One       string   `example:"希望另一半的样子"`
 	Tags          []string `example:"猫控,读书达人,电影爱好者,旅行者"`
 	Images        []string `example:"http://x.x.x.x:x/images/img1.jpg,http://x.x.x.x:x/images/img2.jpg"`
 	Cover_Image   string   `example:"http://x.x.x.x:x/images/cover.png"`
@@ -61,10 +61,10 @@ type UserDetailsUpdate struct {
 	Education     string `example:"本科"`
 	Location      string `example:"深圳"`
 	Hometown      string `example:"湖南长沙"`
-	SelfDesc      string `example:"自我描述"`
+	Self_Desc     string `example:"自我描述"`
 	Hobbies       string `example:"兴趣爱好"`
 	Declaration   string `example:"交友宣言"`
-	TheOne        string `example:"希望另一半的样子"`
+	The_One       string `example:"希望另一半的样子"`
 	Tags          string `example:"猫控 读书达人 电影爱好者 旅行者"`
 	Birthday      string `json:"birthday" example:"1988-10-2"`
 	Purpose       string `json:"purpose" example:"交友"`
