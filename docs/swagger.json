@@ -482,6 +482,50 @@
                 }
             }
         },
+        "/user/setUserDetails": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "用户可设置信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "设置用户信息",
+                "operationId": "set_user_details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "用户信息",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.UserDetailsUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/user/setUserGender": {
             "post": {
                 "security": [
@@ -756,6 +800,95 @@
                         "http://x.x.x.x:x/images/img1.jpg",
                         "http://x.x.x.x:x/images/img2.jpg"
                     ]
+                },
+                "income": {
+                    "type": "string",
+                    "example": "15-25w"
+                },
+                "location": {
+                    "type": "string",
+                    "example": "深圳"
+                },
+                "marriage": {
+                    "type": "string",
+                    "example": "未婚"
+                },
+                "occupation": {
+                    "type": "string",
+                    "example": "平面设计师"
+                },
+                "purpose": {
+                    "type": "string",
+                    "example": "交友"
+                },
+                "selfDesc": {
+                    "type": "string",
+                    "example": "自我描述"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "猫控",
+                        "读书达人",
+                        "电影爱好者",
+                        "旅行者"
+                    ]
+                },
+                "theOne": {
+                    "type": "string",
+                    "example": "希望另一半的样子"
+                },
+                "userName": {
+                    "type": "string",
+                    "example": "豆豆"
+                },
+                "weight": {
+                    "type": "string",
+                    "example": "43kg"
+                }
+            }
+        },
+        "controllers.UserDetailsUpdate": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer",
+                    "example": 25
+                },
+                "birthday": {
+                    "type": "string",
+                    "example": "1988-10-2"
+                },
+                "constellation": {
+                    "type": "string",
+                    "example": "处女座"
+                },
+                "declaration": {
+                    "type": "string",
+                    "example": "交友宣言"
+                },
+                "education": {
+                    "type": "string",
+                    "example": "本科"
+                },
+                "gender": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "height": {
+                    "type": "string",
+                    "example": "165cm"
+                },
+                "hobbies": {
+                    "type": "string",
+                    "example": "兴趣爱好"
+                },
+                "hometown": {
+                    "type": "string",
+                    "example": "湖南长沙"
                 },
                 "income": {
                     "type": "string",

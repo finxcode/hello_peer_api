@@ -51,6 +51,28 @@ type UserDetails struct {
 	Income        string   `json:"income" example:"15-25w"`
 }
 
+type UserDetailsUpdate struct {
+	UserName      string   `example:"豆豆"`
+	Age           int      `example:"25"`
+	Occupation    string   `example:"平面设计师"`
+	Constellation string   `example:"处女座"`
+	Height        string   `example:"165cm"`
+	Weight        string   `example:"43kg"`
+	Education     string   `example:"本科"`
+	Location      string   `example:"深圳"`
+	Hometown      string   `example:"湖南长沙"`
+	SelfDesc      string   `example:"自我描述"`
+	Hobbies       string   `example:"兴趣爱好"`
+	Declaration   string   `example:"交友宣言"`
+	TheOne        string   `example:"希望另一半的样子"`
+	Tags          []string `example:"猫控,读书达人,电影爱好者,旅行者"`
+	Birthday      string   `json:"birthday" example:"1988-10-2"`
+	Purpose       string   `json:"purpose" example:"交友"`
+	Gender        int      `json:"gender" example:"1"`
+	Marriage      string   `json:"marriage" example:"未婚"`
+	Income        string   `json:"income" example:"15-25w"`
+}
+
 // GetRandomUsersInSquare
 // @Summary 获取用户广场随机用户列表
 // @Description 可通过用户ID以及用户广场设置项获取随机用户列表
@@ -185,4 +207,20 @@ func GetUserDetails(c *gin.Context) {
 // @Router /images/{file_name} [get]
 func GetImage(c *gin.Context) {
 	// 获取图片
+}
+
+// SetUserDetails
+// @Summary 设置用户信息
+// @Description 用户可设置信息
+// @ID set_user_details
+// @Tags User
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param user body UserDetailsUpdate true "用户信息"
+// @Success 200
+// @Router /user/setUserDetails [post]
+func SetUserDetails(c *gin.Context) {
+	// 更新用户信息
 }

@@ -143,6 +143,72 @@ definitions:
         example: 43kg
         type: string
     type: object
+  controllers.UserDetailsUpdate:
+    properties:
+      age:
+        example: 25
+        type: integer
+      birthday:
+        example: "1988-10-2"
+        type: string
+      constellation:
+        example: 处女座
+        type: string
+      declaration:
+        example: 交友宣言
+        type: string
+      education:
+        example: 本科
+        type: string
+      gender:
+        example: 1
+        type: integer
+      height:
+        example: 165cm
+        type: string
+      hobbies:
+        example: 兴趣爱好
+        type: string
+      hometown:
+        example: 湖南长沙
+        type: string
+      income:
+        example: 15-25w
+        type: string
+      location:
+        example: 深圳
+        type: string
+      marriage:
+        example: 未婚
+        type: string
+      occupation:
+        example: 平面设计师
+        type: string
+      purpose:
+        example: 交友
+        type: string
+      selfDesc:
+        example: 自我描述
+        type: string
+      tags:
+        example:
+        - 猫控
+        - 读书达人
+        - 电影爱好者
+        - 旅行者
+        items:
+          type: string
+        type: array
+      theOne:
+        example: 希望另一半的样子
+        type: string
+      userName:
+        example: 豆豆
+        type: string
+      weight:
+        example: 43kg
+        type: string
+    type: object
   models.AutoLogin:
     properties:
       code:
@@ -571,6 +637,34 @@ paths:
       security:
       - x-token: []
       summary: 设置用户基础信息
+      tags:
+      - User
+  /user/setUserDetails:
+    post:
+      consumes:
+      - application/json
+      description: 用户可设置信息
+      operationId: set_user_details
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 用户信息
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.UserDetailsUpdate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户信息
       tags:
       - User
   /user/setUserGender:
