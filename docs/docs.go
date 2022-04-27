@@ -481,6 +481,42 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/pet/deletePetImage": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "删除宠物图片",
+                "tags": [
+                    "Pet"
+                ],
+                "summary": "删除宠物图片",
+                "operationId": "delete_pet_image",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "文件名",
+                        "name": "filename",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/user/pet/getPetDetails": {
             "get": {
                 "security": [
@@ -554,6 +590,48 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/models.PetRequest"
                         }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/pet/upload/setPetImage": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "用户可上传宠物图片",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Pet"
+                ],
+                "summary": "设置宠物图片",
+                "operationId": "set_pet_image",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "宠物图片",
+                        "name": "content",
+                        "in": "formData",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -1176,10 +1254,6 @@ const docTemplate = `{
                 "description": {
                     "type": "string",
                     "example": "这是一个好宠物"
-                },
-                "images": {
-                    "type": "string",
-                    "example": "img1.jpg img2.jpg"
                 },
                 "pet_Name": {
                     "type": "string",

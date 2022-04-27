@@ -17,7 +17,6 @@ type PetRequest struct {
 	Birthday    string  `json:"birthday" example:"2021-10-12"`
 	Weight      float32 `json:"weight" example:"3.2"`
 	Description string  `json:"description" example:"这是一个好宠物"`
-	Images      string  `json:"images" example:"img1.jpg img2.jpg"`
 }
 
 // GetPetDetails
