@@ -42,8 +42,8 @@ type UserDetails struct {
 	Declaration   string   `example:"交友宣言"`
 	The_One       string   `example:"希望另一半的样子"`
 	Tags          []string `example:"猫控,读书达人,电影爱好者,旅行者"`
-	Images        []string `example:"http://x.x.x.x:x/images/img1.jpg,http://x.x.x.x:x/images/img2.jpg"`
-	Cover_Image   string   `example:"http://x.x.x.x:x/images/cover.png"`
+	Images        []string `example:"img1.jpg,img2.jpg"`
+	Cover_Image   string   `example:"cover.png"`
 	Birthday      string   `json:"birthday" example:"1988-10-2"`
 	Purpose       string   `json:"purpose" example:"交友"`
 	Gender        int      `json:"gender" example:"1"`
@@ -239,4 +239,18 @@ func GetImage(c *gin.Context) {
 // @Router /user/setUserDetails [post]
 func SetUserDetails(c *gin.Context) {
 	// 更新用户信息
+}
+
+// DeleteUserImage
+// @Summary 删除用户图片
+// @Description 删除用户图片
+// @ID delete_user_image
+// @Tags User
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @param filename query string true "文件名"
+// @Success 200
+// @Router /user/deleteUserImage [post]
+func DeleteUserImage(c *gin.Context) {
+	// 删除用户图片
 }

@@ -283,6 +283,42 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/deleteUserImage": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "删除用户图片",
+                "tags": [
+                    "User"
+                ],
+                "summary": "删除用户图片",
+                "operationId": "delete_user_image",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "文件名",
+                        "name": "filename",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/user/getRandomUserDetails/{user_id}": {
             "get": {
                 "description": "可通过用户ID获取用户详情",
@@ -441,6 +477,88 @@ const docTemplate = `{
                         "schema": {
                             "$ref": "#/definitions/controllers.UserDetails"
                         }
+                    }
+                }
+            }
+        },
+        "/user/pet/getPetDetails": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可获取宠物详情",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Pet"
+                ],
+                "summary": "获取宠物详情",
+                "operationId": "get_pet_details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.PetResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/pet/setPetDetails": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "用户可设置宠物详情",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Pet"
+                ],
+                "summary": "设置宠物详情",
+                "operationId": "set_pet_details",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "宠物详情",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.PetRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
                     }
                 }
             }
@@ -814,7 +932,7 @@ const docTemplate = `{
                 },
                 "cover_Image": {
                     "type": "string",
-                    "example": "http://x.x.x.x:x/images/cover.png"
+                    "example": "cover.png"
                 },
                 "declaration": {
                     "type": "string",
@@ -846,8 +964,8 @@ const docTemplate = `{
                         "type": "string"
                     },
                     "example": [
-                        "http://x.x.x.x:x/images/img1.jpg",
-                        "http://x.x.x.x:x/images/img2.jpg"
+                        "img1.jpg",
+                        "img2.jpg"
                     ]
                 },
                 "income": {
@@ -1045,6 +1163,70 @@ const docTemplate = `{
                 "offset": {
                     "type": "integer",
                     "example": 0
+                }
+            }
+        },
+        "models.PetRequest": {
+            "type": "object",
+            "properties": {
+                "birthday": {
+                    "type": "string",
+                    "example": "2021-10-12"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "这是一个好宠物"
+                },
+                "images": {
+                    "type": "string",
+                    "example": "img1.jpg img2.jpg"
+                },
+                "pet_Name": {
+                    "type": "string",
+                    "example": "狗狗2022"
+                },
+                "sex": {
+                    "type": "string",
+                    "example": "MM"
+                },
+                "weight": {
+                    "type": "number",
+                    "example": 3.2
+                }
+            }
+        },
+        "models.PetResponse": {
+            "type": "object",
+            "properties": {
+                "birthday": {
+                    "type": "string",
+                    "example": "2021-10-12"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "这是一个好宠物"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "img1.jpg",
+                        "img2.jpg"
+                    ]
+                },
+                "pet_Name": {
+                    "type": "string",
+                    "example": "狗狗2022"
+                },
+                "sex": {
+                    "type": "string",
+                    "example": "MM"
+                },
+                "weight": {
+                    "type": "number",
+                    "example": 3.2
                 }
             }
         },
