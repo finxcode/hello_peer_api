@@ -16,3 +16,12 @@ type BasicInfo struct {
 	Hometown      string  `example:"重庆"`
 	Marriage      string  `example:"未婚"`
 }
+
+type HomepageInfo struct {
+	UserName string       `json:"user_name" example:"用户1"`
+	Location string       `json:"location" example:"广东,深圳"`
+	Stat     RelationStat `json:"stat"`
+	PetFood  int          `json:"pet_food" example:"320"`
+	PetName  string       `json:"pet_name" example:"宠物猫猫"`
+	Avatar   string       `json:"avatar" example:"avatar1-1234.jpg"`
+}

@@ -254,3 +254,18 @@ func SetUserDetails(c *gin.Context) {
 func DeleteUserImage(c *gin.Context) {
 	// 删除用户图片
 }
+
+// GetUserHomepageInfo
+// @Summary 获取用户首页信息
+// @Description 可获取用户首页信息
+// @ID get_user_homepage_info
+// @Tags User
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 200 {object} models.HomepageInfo
+// @Router /user/getUserHomepageInfo [get]
+func GetUserHomepageInfo(c *gin.Context) {
+	// 获取用户首页信息
+}

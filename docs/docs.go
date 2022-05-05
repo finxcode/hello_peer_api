@@ -481,6 +481,44 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/getUserHomepageInfo": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可获取用户首页信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "获取用户首页信息",
+                "operationId": "get_user_homepage_info",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.HomepageInfo"
+                        }
+                    }
+                }
+            }
+        },
         "/user/pet/deletePetImage": {
             "post": {
                 "security": [
@@ -1231,6 +1269,34 @@ const docTemplate = `{
                 }
             }
         },
+        "models.HomepageInfo": {
+            "type": "object",
+            "properties": {
+                "avatar": {
+                    "type": "string",
+                    "example": "avatar1-1234.jpg"
+                },
+                "location": {
+                    "type": "string",
+                    "example": "广东,深圳"
+                },
+                "pet_food": {
+                    "type": "integer",
+                    "example": 320
+                },
+                "pet_name": {
+                    "type": "string",
+                    "example": "宠物猫猫"
+                },
+                "stat": {
+                    "$ref": "#/definitions/models.RelationStat"
+                },
+                "user_name": {
+                    "type": "string",
+                    "example": "用户1"
+                }
+            }
+        },
         "models.Pagination": {
             "type": "object",
             "properties": {
@@ -1334,6 +1400,39 @@ const docTemplate = `{
                 "tags": {
                     "type": "string",
                     "example": "不限"
+                }
+            }
+        },
+        "models.RelationStat": {
+            "type": "object",
+            "properties": {
+                "focus_by_new": {
+                    "type": "integer",
+                    "example": 4
+                },
+                "focus_on_total": {
+                    "type": "integer",
+                    "example": 24
+                },
+                "focused_by_total": {
+                    "type": "integer",
+                    "example": 50
+                },
+                "know_me_new": {
+                    "type": "integer",
+                    "example": 3
+                },
+                "know_me_total": {
+                    "type": "integer",
+                    "example": 20
+                },
+                "viewed_by_new": {
+                    "type": "integer",
+                    "example": 10
+                },
+                "viewed_by_total": {
+                    "type": "integer",
+                    "example": 200
                 }
             }
         },

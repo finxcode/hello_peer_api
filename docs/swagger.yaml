@@ -242,6 +242,26 @@ definitions:
         example: 56.5
         type: number
     type: object
+  models.HomepageInfo:
+    properties:
+      avatar:
+        example: avatar1-1234.jpg
+        type: string
+      location:
+        example: 广东,深圳
+        type: string
+      pet_food:
+        example: 320
+        type: integer
+      pet_name:
+        example: 宠物猫猫
+        type: string
+      stat:
+        $ref: '#/definitions/models.RelationStat'
+      user_name:
+        example: 用户1
+        type: string
+    type: object
   models.Pagination:
     properties:
       limit:
@@ -317,6 +337,30 @@ definitions:
       tags:
         example: 不限
         type: string
+    type: object
+  models.RelationStat:
+    properties:
+      focus_by_new:
+        example: 4
+        type: integer
+      focus_on_total:
+        example: 24
+        type: integer
+      focused_by_total:
+        example: 50
+        type: integer
+      know_me_new:
+        example: 3
+        type: integer
+      know_me_total:
+        example: 20
+        type: integer
+      viewed_by_new:
+        example: 10
+        type: integer
+      viewed_by_total:
+        example: 200
+        type: integer
     type: object
   models.SquareSettings:
     properties:
@@ -669,6 +713,30 @@ paths:
       security:
       - x-token: []
       summary: 获取用户详情
+      tags:
+      - User
+  /user/getUserHomepageInfo:
+    get:
+      consumes:
+      - application/json
+      description: 可获取用户首页信息
+      operationId: get_user_homepage_info
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.HomepageInfo'
+      security:
+      - x-token: []
+      summary: 获取用户首页信息
       tags:
       - User
   /user/pet/deletePetImage:
