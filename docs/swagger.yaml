@@ -611,7 +611,7 @@ paths:
       summary: 删除用户图片
       tags:
       - User
-  /user/getRandomUserDetails/{user_id}:
+  /user/getRandomUserDetails:
     get:
       consumes:
       - application/json

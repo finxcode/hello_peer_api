@@ -98,7 +98,7 @@ func GetRandomUsersInSquare(c *gin.Context) {
 // @Produce application/json
 // @Param uid query string true "用户ID"
 // @Success 200 {object} UserDetails
-// @Router /user/getRandomUserDetails/{user_id} [get]
+// @Router /user/getRandomUserDetails [get]
 func GetRandomUserDetails(c *gin.Context) {
 	//获取用户详情
 }

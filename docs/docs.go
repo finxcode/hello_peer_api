@@ -319,7 +319,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/getRandomUserDetails/{user_id}": {
+        "/user/getRandomUserDetails": {
             "get": {
                 "description": "可通过用户ID获取用户详情",
                 "consumes": [
