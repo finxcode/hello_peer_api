@@ -96,6 +96,8 @@ func GetRandomUsersInSquare(c *gin.Context) {
 // @Tags User
 // @Accept application/json
 // @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
 // @Param uid query string true "用户ID"
 // @Success 200 {object} UserDetails
 // @Router /user/getRandomUserDetails [get]

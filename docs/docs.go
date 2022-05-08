@@ -321,6 +321,11 @@ const docTemplate = `{
         },
         "/user/getRandomUserDetails": {
             "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
                 "description": "可通过用户ID获取用户详情",
                 "consumes": [
                     "application/json"
@@ -334,6 +339,13 @@ const docTemplate = `{
                 "summary": "获取广场用户详情",
                 "operationId": "get_random_users_details",
                 "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
                     {
                         "type": "string",
                         "description": "用户ID",
