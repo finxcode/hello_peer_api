@@ -793,6 +793,28 @@ paths:
       summary: 获取宠物详情
       tags:
       - Pet
+  /user/pet/initPet:
+    post:
+      consumes:
+      - application/json
+      description: 用户可初始化宠物
+      operationId: init_pet
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ""
+      security:
+      - x-token: []
+      summary: 初始化宠物
+      tags:
+      - Pet
   /user/pet/setPetDetails:
     post:
       consumes:

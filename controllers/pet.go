@@ -31,3 +31,18 @@ func DeletePetImage(c *gin.Context) {
 func SetPetImage(c *gin.Context) {
 	//设置宠物图片
 }
+
+// InitPet
+// @Summary 初始化宠物
+// @Description 用户可初始化宠物
+// @ID init_pet
+// @Tags Pet
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 200
+// @Router /user/pet/initPet [post]
+func InitPet(c *gin.Context) {
+	// 初始化宠物
+}

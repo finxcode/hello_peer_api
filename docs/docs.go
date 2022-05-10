@@ -605,6 +605,41 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/pet/initPet": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "用户可初始化宠物",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Pet"
+                ],
+                "summary": "初始化宠物",
+                "operationId": "init_pet",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/user/pet/setPetDetails": {
             "post": {
                 "security": [
