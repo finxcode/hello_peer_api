@@ -34,6 +34,22 @@ func GetPetDetails(c *gin.Context) {
 	//获取宠物详情
 }
 
+// GetPetDetailsById
+// @Summary 根据用户id获取宠物详情
+// @Description 可根据用户id获取宠物详情
+// @ID get_pet_details_by_id
+// @Tags Pet
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param uid query string true "用户ID"
+// @Success 200 {object} PetResponse
+// @Router /user/pet/getPetDetailsById [get]
+func GetPetDetailsById(c *gin.Context) {
+	//获取宠物详情
+}
+
 // SetPetDetails
 // @Summary 设置宠物详情
 // @Description 用户可设置宠物详情

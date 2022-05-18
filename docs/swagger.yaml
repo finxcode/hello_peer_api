@@ -793,6 +793,35 @@ paths:
       summary: 获取宠物详情
       tags:
       - Pet
+  /user/pet/getPetDetailsById:
+    get:
+      consumes:
+      - application/json
+      description: 可根据用户id获取宠物详情
+      operationId: get_pet_details_by_id
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 用户ID
+        in: query
+        name: uid
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PetResponse'
+      security:
+      - x-token: []
+      summary: 根据用户id获取宠物详情
+      tags:
+      - Pet
   /user/pet/initPet:
     post:
       consumes:

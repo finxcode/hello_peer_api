@@ -605,6 +605,51 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/pet/getPetDetailsById": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户id获取宠物详情",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Pet"
+                ],
+                "summary": "根据用户id获取宠物详情",
+                "operationId": "get_pet_details_by_id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "用户ID",
+                        "name": "uid",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.PetResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/user/pet/initPet": {
             "post": {
                 "security": [
