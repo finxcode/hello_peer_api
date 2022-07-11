@@ -113,7 +113,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -148,8 +148,8 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.RecommendSetting"
                         }
@@ -186,8 +186,8 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.SquareSettings"
                         }
@@ -233,7 +233,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -277,7 +277,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -313,7 +313,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -355,8 +355,8 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/controllers.UserDetails"
                         }
@@ -402,8 +402,8 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -414,7 +414,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/getRecommendedUserList": {
+        "/user/getRecommendedUsers": {
             "get": {
                 "security": [
                     {
@@ -432,7 +432,7 @@ const docTemplate = `{
                     "User"
                 ],
                 "summary": "获取用户推荐用户列表",
-                "operationId": "get_recommended_user_list",
+                "operationId": "get_recommended_users",
                 "parameters": [
                     {
                         "type": "string",
@@ -443,8 +443,8 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -462,7 +462,7 @@ const docTemplate = `{
                         "x-token": []
                     }
                 ],
-                "description": "可获取用户详情",
+                "description": "可根据用户ID获取用户详情",
                 "consumes": [
                     "application/json"
                 ],
@@ -472,8 +472,8 @@ const docTemplate = `{
                 "tags": [
                     "User"
                 ],
-                "summary": "获取用户详情",
-                "operationId": "get_user_details",
+                "summary": "根据用户ID获取用户详情",
+                "operationId": "get_user_details_by_id",
                 "parameters": [
                     {
                         "type": "string",
@@ -481,11 +481,18 @@ const docTemplate = `{
                         "name": "x-token",
                         "in": "header",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "user_id",
+                        "name": "uid",
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/controllers.UserDetails"
                         }
@@ -522,10 +529,48 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.HomepageInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/getUserInfoCompleteLevel": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户ID获取用户信息完成度 0-未完成 1-基本信息 2-基本信息+头像",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "根据用户ID获取用户信息完成度",
+                "operationId": "get_user_info_complete_level",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.InfoCompletionLevel"
                         }
                     }
                 }
@@ -561,7 +606,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -596,8 +641,8 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.PetResponse"
                         }
@@ -641,8 +686,8 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.PetResponse"
                         }
@@ -679,7 +724,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -723,7 +768,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -765,7 +810,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -809,7 +854,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -853,7 +898,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -897,7 +942,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -939,7 +984,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -981,7 +1026,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -1023,7 +1068,7 @@ const docTemplate = `{
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -1389,6 +1434,15 @@ const docTemplate = `{
                 }
             }
         },
+        "models.InfoCompletionLevel": {
+            "type": "object",
+            "properties": {
+                "level": {
+                    "type": "integer",
+                    "example": 1
+                }
+            }
+        },
         "models.Pagination": {
             "type": "object",
             "properties": {
@@ -1602,7 +1656,7 @@ const docTemplate = `{
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
 	Version:          "0.1",
-	Host:             "1.12.243.73:8686",
+	Host:             "https://hellopeer.net",
 	BasePath:         "/api/v0.1",
 	Schemes:          []string{},
 	Title:            "Hello Peer API",

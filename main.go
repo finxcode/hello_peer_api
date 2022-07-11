@@ -15,7 +15,7 @@ import (
 // @contact.name Frank Sheng
 // @contact.email 726569998@qq.com
 
-// @host 1.12.243.73:8686
+// @host https://hellopeer.net
 // @BasePath /api/v0.1
 func main() {
 	r := gin.Default()

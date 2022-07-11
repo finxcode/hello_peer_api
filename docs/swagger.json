@@ -10,7 +10,7 @@
         },
         "version": "0.1"
     },
-    "host": "1.12.243.73:8686",
+    "host": "https://hellopeer.net",
     "basePath": "/api/v0.1",
     "paths": {
         "/auth/authlogin": {
@@ -106,7 +106,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -141,8 +141,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.RecommendSetting"
                         }
@@ -179,8 +179,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.SquareSettings"
                         }
@@ -226,7 +226,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -270,7 +270,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -306,7 +306,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -348,8 +348,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/controllers.UserDetails"
                         }
@@ -395,8 +395,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -407,7 +407,7 @@
                 }
             }
         },
-        "/user/getRecommendedUserList": {
+        "/user/getRecommendedUsers": {
             "get": {
                 "security": [
                     {
@@ -425,7 +425,7 @@
                     "User"
                 ],
                 "summary": "获取用户推荐用户列表",
-                "operationId": "get_recommended_user_list",
+                "operationId": "get_recommended_users",
                 "parameters": [
                     {
                         "type": "string",
@@ -436,8 +436,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -455,7 +455,7 @@
                         "x-token": []
                     }
                 ],
-                "description": "可获取用户详情",
+                "description": "可根据用户ID获取用户详情",
                 "consumes": [
                     "application/json"
                 ],
@@ -465,8 +465,8 @@
                 "tags": [
                     "User"
                 ],
-                "summary": "获取用户详情",
-                "operationId": "get_user_details",
+                "summary": "根据用户ID获取用户详情",
+                "operationId": "get_user_details_by_id",
                 "parameters": [
                     {
                         "type": "string",
@@ -474,11 +474,18 @@
                         "name": "x-token",
                         "in": "header",
                         "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "user_id",
+                        "name": "uid",
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/controllers.UserDetails"
                         }
@@ -515,10 +522,48 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.HomepageInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/getUserInfoCompleteLevel": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户ID获取用户信息完成度 0-未完成 1-基本信息 2-基本信息+头像",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "根据用户ID获取用户信息完成度",
+                "operationId": "get_user_info_complete_level",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.InfoCompletionLevel"
                         }
                     }
                 }
@@ -554,7 +599,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -589,8 +634,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.PetResponse"
                         }
@@ -634,8 +679,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "0": {
+                        "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.PetResponse"
                         }
@@ -672,7 +717,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -716,7 +761,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -758,7 +803,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -802,7 +847,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -846,7 +891,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -890,7 +935,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -932,7 +977,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -974,7 +1019,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -1016,7 +1061,7 @@
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "0": {
                         "description": ""
                     }
                 }
@@ -1379,6 +1424,15 @@
                 "user_name": {
                     "type": "string",
                     "example": "用户1"
+                }
+            }
+        },
+        "models.InfoCompletionLevel": {
+            "type": "object",
+            "properties": {
+                "level": {
+                    "type": "integer",
+                    "example": 1
                 }
             }
         },
