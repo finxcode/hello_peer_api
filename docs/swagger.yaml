@@ -389,6 +389,13 @@ definitions:
         example: 1
         type: integer
     type: object
+  models.UserIMSig:
+    properties:
+      id:
+        type: string
+      sig:
+        type: string
+    type: object
   models.UserProfileForm:
     properties:
       code:
@@ -983,6 +990,30 @@ paths:
       summary: 设置用户性别
       tags:
       - User
+  /user/tencent/getUserIMSig:
+    get:
+      consumes:
+      - application/json
+      description: 可获取用户腾讯IM签名
+      operationId: get_user_im_sig
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserIMSig'
+      security:
+      - x-token: []
+      summary: 获取用户腾讯IM签名
+      tags:
+      - Tencent
   /user/upload/setUserAvatar:
     post:
       consumes:

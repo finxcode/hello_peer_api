@@ -903,6 +903,44 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/tencent/getUserIMSig": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可获取用户腾讯IM签名",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Tencent"
+                ],
+                "summary": "获取用户腾讯IM签名",
+                "operationId": "get_user_im_sig",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.UserIMSig"
+                        }
+                    }
+                }
+            }
+        },
         "/user/upload/setUserAvatar": {
             "post": {
                 "security": [
@@ -1564,6 +1602,17 @@ const docTemplate = `{
                 "gender": {
                     "type": "integer",
                     "example": 1
+                }
+            }
+        },
+        "models.UserIMSig": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "sig": {
+                    "type": "string"
                 }
             }
         },
