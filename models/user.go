@@ -25,3 +25,7 @@ type HomepageInfo struct {
 	PetName  string       `json:"pet_name" example:"宠物猫猫"`
 	Avatar   string       `json:"avatar" example:"avatar1-1234.jpg"`
 }
+
+type InfoCompletionLevel struct {
+	Level int `json:"level" example:"1"`
+}

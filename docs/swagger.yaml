@@ -262,6 +262,12 @@ definitions:
         example: 用户1
         type: string
     type: object
+  models.InfoCompletionLevel:
+    properties:
+      level:
+        example: 1
+        type: integer
+    type: object
   models.Pagination:
     properties:
       limit:
@@ -417,7 +423,7 @@ definitions:
         example: ""
         type: string
     type: object
-host: 1.12.243.73:8686
+host: https://hellopeer.net
 info:
   contact:
     email: 726569998@qq.com
@@ -484,7 +490,7 @@ paths:
         required: true
         type: string
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -506,8 +512,8 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
+        "0":
+          description: ""
           schema:
             $ref: '#/definitions/models.RecommendSetting'
       security:
@@ -530,8 +536,8 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
+        "0":
+          description: ""
           schema:
             $ref: '#/definitions/models.SquareSettings'
       security:
@@ -560,7 +566,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -588,7 +594,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -611,7 +617,7 @@ paths:
         required: true
         type: string
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -638,8 +644,8 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
+        "0":
+          description: ""
           schema:
             $ref: '#/definitions/controllers.UserDetails'
       security:
@@ -668,8 +674,8 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
+        "0":
+          description: ""
           schema:
             items:
               $ref: '#/definitions/controllers.RandomUser'
@@ -679,12 +685,12 @@ paths:
       summary: 获取用户广场随机用户列表
       tags:
       - User
-  /user/getRecommendedUserList:
+  /user/getRecommendedUsers:
     get:
       consumes:
       - application/json
       description: 可通过用户ID获取推荐用户列表
-      operationId: get_recommended_user_list
+      operationId: get_recommended_users
       parameters:
       - description: Authorization
         in: header
@@ -694,8 +700,8 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
+        "0":
+          description: ""
           schema:
             items:
               $ref: '#/definitions/controllers.RecommendedUser'
@@ -709,24 +715,29 @@ paths:
     get:
       consumes:
       - application/json
-      description: 可获取用户详情
-      operationId: get_user_details
+      description: 可根据用户ID获取用户详情
+      operationId: get_user_details_by_id
       parameters:
       - description: Authorization
         in: header
         name: x-token
         required: true
         type: string
+      - description: user_id
+        in: query
+        name: uid
+        required: true
+        type: string
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
+        "0":
+          description: ""
           schema:
             $ref: '#/definitions/controllers.UserDetails'
       security:
       - x-token: []
-      summary: 获取用户详情
+      summary: 根据用户ID获取用户详情
       tags:
       - User
   /user/getUserHomepageInfo:
@@ -744,13 +755,37 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
+        "0":
+          description: ""
           schema:
             $ref: '#/definitions/models.HomepageInfo'
       security:
       - x-token: []
       summary: 获取用户首页信息
+      tags:
+      - User
+  /user/getUserInfoCompleteLevel:
+    get:
+      consumes:
+      - application/json
+      description: 可根据用户ID获取用户信息完成度 0-未完成 1-基本信息 2-基本信息+头像
+      operationId: get_user_info_complete_level
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.InfoCompletionLevel'
+      security:
+      - x-token: []
+      summary: 根据用户ID获取用户信息完成度
       tags:
       - User
   /user/pet/deletePetImage:
@@ -769,7 +804,7 @@ paths:
         required: true
         type: string
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -791,8 +826,8 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
+        "0":
+          description: ""
           schema:
             $ref: '#/definitions/models.PetResponse'
       security:
@@ -820,8 +855,8 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
-          description: OK
+        "0":
+          description: ""
           schema:
             $ref: '#/definitions/models.PetResponse'
       security:
@@ -844,7 +879,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -872,7 +907,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -899,7 +934,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -927,7 +962,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -955,7 +990,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -983,7 +1018,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -1034,7 +1069,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -1061,7 +1096,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []
@@ -1088,7 +1123,7 @@ paths:
       produces:
       - application/json
       responses:
-        "200":
+        "0":
           description: ""
       security:
       - x-token: []

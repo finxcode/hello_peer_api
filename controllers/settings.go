@@ -11,7 +11,7 @@ import "github.com/gin-gonic/gin"
 // @Produce application/json
 // @Security x-token
 // @param x-token header string true "Authorization"
-// @Success 200 {object} models.SquareSettings
+// @Success 0 {object} models.SquareSettings
 // @Router /settings/getSquareSetting [get]
 func GetSquareSettings(c *gin.Context) {
 	//获取用户广场设置
@@ -27,7 +27,7 @@ func GetSquareSettings(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Param settings body models.SquareSettings true "设置"
-// @Success 200
+// @Success 0
 // @Router /settings/setSquareSetting [post]
 func SetSquareSettings(c *gin.Context) {
 	//设置用户广场设置
@@ -42,7 +42,7 @@ func SetSquareSettings(c *gin.Context) {
 // @Produce application/json
 // @Security x-token
 // @param x-token header string true "Authorization"
-// @Success 200 {object} models.RecommendSetting
+// @Success 0 {object} models.RecommendSetting
 // @Router /settings/getRecommendSetting [get]
 func GetRecommendSettings(c *gin.Context) {
 	// 获取用户推荐设置
@@ -58,7 +58,7 @@ func GetRecommendSettings(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Param settings body models.RecommendSetting true "设置"
-// @Success 200
+// @Success 0
 // @Router /settings/setRecommendSetting [post]
 func SetRecommendSettings(c *gin.Context) {
 	//设置用户推荐设置

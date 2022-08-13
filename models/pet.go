@@ -28,7 +28,7 @@ type PetRequest struct {
 // @Produce application/json
 // @Security x-token
 // @param x-token header string true "Authorization"
-// @Success 200 {object} PetResponse
+// @Success 0 {object} PetResponse
 // @Router /user/pet/getPetDetails [get]
 func GetPetDetails(c *gin.Context) {
 	//获取宠物详情
@@ -44,7 +44,7 @@ func GetPetDetails(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Param uid query string true "用户ID"
-// @Success 200 {object} PetResponse
+// @Success 0 {object} PetResponse
 // @Router /user/pet/getPetDetailsById [get]
 func GetPetDetailsById(c *gin.Context) {
 	//获取宠物详情
@@ -60,7 +60,7 @@ func GetPetDetailsById(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Param user body PetRequest true "宠物详情"
-// @Success 200
+// @Success 0
 // @Router /user/pet/setPetDetails [post]
 func SetPetDetails(c *gin.Context) {
 	// 更新宠物详情

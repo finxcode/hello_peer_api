@@ -10,7 +10,7 @@ import "github.com/gin-gonic/gin"
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @param filename query string true "文件名"
-// @Success 200
+// @Success 0
 // @Router /user/pet/deletePetImage [post]
 func DeletePetImage(c *gin.Context) {
 	// 删除宠物图片
@@ -26,7 +26,7 @@ func DeletePetImage(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @param content formData file true "宠物图片"
-// @Success 200
+// @Success 0
 // @Router /user/pet/upload/setPetImage [post]
 func SetPetImage(c *gin.Context) {
 	//设置宠物图片
@@ -41,7 +41,7 @@ func SetPetImage(c *gin.Context) {
 // @Produce application/json
 // @Security x-token
 // @param x-token header string true "Authorization"
-// @Success 200
+// @Success 0
 // @Router /user/pet/initPet [post]
 func InitPet(c *gin.Context) {
 	// 初始化宠物

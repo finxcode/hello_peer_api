@@ -83,7 +83,7 @@ type UserDetailsUpdate struct {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Param pagination body models.Pagination true "分页"
-// @Success 200 {array} RandomUser
+// @Success 0 {array} RandomUser
 // @Router /user/getRandomUsers [post]
 func GetRandomUsersInSquare(c *gin.Context) {
 	//获取广场随机用户接口
@@ -99,24 +99,24 @@ func GetRandomUsersInSquare(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Param uid query string true "用户ID"
-// @Success 200 {object} UserDetails
+// @Success 0 {object} UserDetails
 // @Router /user/getRandomUserDetails [get]
 func GetRandomUserDetails(c *gin.Context) {
 	//获取用户详情
 }
 
-// GetRecommendedUserList
+// GetRecommendedUsers
 // @Summary 获取用户推荐用户列表
 // @Description 可通过用户ID获取推荐用户列表
-// @ID get_recommended_user_list
+// @ID get_recommended_users
 // @Tags User
 // @Accept application/json
 // @Produce application/json
 // @Security x-token
 // @param x-token header string true "Authorization"
-// @Success 200 {array} RecommendedUser
-// @Router /user/getRecommendedUserList [get]
-func GetRecommendedUserList(c *gin.Context) {
+// @Success 0 {array} RecommendedUser
+// @Router /user/getRecommendedUsers [get]
+func GetRecommendedUsers(c *gin.Context) {
 	//获取某一用户推荐用户列表
 }
 
@@ -130,7 +130,7 @@ func GetRecommendedUserList(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Param gender body models.UserGender true "用户性别"
-// @Success 200
+// @Success 0
 // @Router /user/setUserGender [post]
 func SetUserGender(c *gin.Context) {
 }
@@ -145,7 +145,7 @@ func SetUserGender(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Param basicInfo body models.BasicInfo true "用户基础信息"
-// @Success 200
+// @Success 0
 // @Router /user/setUserBasicInfo [post]
 func SetUserBasicInfo(c *gin.Context) {
 
@@ -161,7 +161,7 @@ func SetUserBasicInfo(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @param content formData file true "头像文件"
-// @Success 200
+// @Success 0
 // @Router /user/upload/setUserAvatar [post]
 func SetUserAvatar(c *gin.Context) {
 	//设置用户头像
@@ -177,7 +177,7 @@ func SetUserAvatar(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @param content formData file true "封面文件"
-// @Success 200
+// @Success 0
 // @Router /user/upload/setUserCover [post]
 func SetUserCover(c *gin.Context) {
 	//设置用户头像
@@ -193,7 +193,7 @@ func SetUserCover(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @param content formData file true "用户图片"
-// @Success 200
+// @Success 0
 // @Router /user/upload/setUserImage [post]
 func SetUserImage(c *gin.Context) {
 	//设置用户头像
@@ -208,7 +208,7 @@ func SetUserImage(c *gin.Context) {
 // @Produce application/json
 // @Security x-token
 // @param x-token header string true "Authorization"
-// @Success 200 {object} UserDetails
+// @Success 0 {object} UserDetails
 // @Router /user/getUserDetails [get]
 func GetUserDetails(c *gin.Context) {
 	//获取用户详情
@@ -221,7 +221,7 @@ func GetUserDetails(c *gin.Context) {
 // @Tags Util
 // @Security x-token
 // @param x-token header string true "Authorization"
-// @Success 200
+// @Success 0
 // @Router /images/{file_name} [get]
 func GetImage(c *gin.Context) {
 	// 获取图片
@@ -237,7 +237,7 @@ func GetImage(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Param user body UserDetailsUpdate true "用户信息"
-// @Success 200
+// @Success 0
 // @Router /user/setUserDetails [post]
 func SetUserDetails(c *gin.Context) {
 	// 更新用户信息
@@ -251,7 +251,7 @@ func SetUserDetails(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @param filename query string true "文件名"
-// @Success 200
+// @Success 0
 // @Router /user/deleteUserImage [post]
 func DeleteUserImage(c *gin.Context) {
 	// 删除用户图片
@@ -266,8 +266,39 @@ func DeleteUserImage(c *gin.Context) {
 // @Produce application/json
 // @Security x-token
 // @param x-token header string true "Authorization"
-// @Success 200 {object} models.HomepageInfo
+// @Success 0 {object} models.HomepageInfo
 // @Router /user/getUserHomepageInfo [get]
 func GetUserHomepageInfo(c *gin.Context) {
 	// 获取用户首页信息
+}
+
+// GetUserDetailsById
+// @Summary 根据用户ID获取用户详情
+// @Description 可根据用户ID获取用户详情
+// @ID get_user_details_by_id
+// @Tags User
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @param uid query string true "user_id"
+// @Success 0 {object} UserDetails
+// @Router /user/getUserDetails [get]
+func GetUserDetailsById(c *gin.Context) {
+	//根据用户ID获取用户详情
+}
+
+// GetUserInfoCompleteLevel
+// @Summary 根据用户ID获取用户信息完成度
+// @Description 可根据用户ID获取用户信息完成度 0-未完成 1-基本信息 2-基本信息+头像
+// @ID get_user_info_complete_level
+// @Tags User
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 0 {object} models.InfoCompletionLevel
+// @Router /user/getUserInfoCompleteLevel [get]
+func GetUserInfoCompleteLevel(c *gin.Context) {
+	//根据用户ID获取用户详情
 }
