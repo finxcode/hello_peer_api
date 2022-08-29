@@ -816,6 +816,44 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/relation/setFocusOn": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户ID，目标用户ID，关注状态设置用户之间的关注。 0 - 取消关注， 1 - 新关注， 2 - 已关注（用户已阅）",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "设置两个用户之间的关注",
+                "operationId": "set_focus_on",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.FocusRequest"
+                        }
+                    }
+                }
+            }
+        },
         "/user/setUserBasicInfo": {
             "post": {
                 "security": [
@@ -1441,6 +1479,19 @@ const docTemplate = `{
                 "weight": {
                     "type": "number",
                     "example": 56.5
+                }
+            }
+        },
+        "models.FocusRequest": {
+            "type": "object",
+            "properties": {
+                "on": {
+                    "type": "string",
+                    "example": "2"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "1"
                 }
             }
         },
