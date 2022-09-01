@@ -242,6 +242,33 @@ definitions:
         example: 56.5
         type: number
     type: object
+  models.Fan:
+    properties:
+      age:
+        example: 26
+        type: integer
+      coverImage:
+        example: https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132
+        type: string
+      location:
+        example: 广东，深圳
+        type: string
+      occupation:
+        example: 产品经理
+        type: string
+      petName:
+        example: 一个宠物
+        type: string
+      status:
+        example: 1
+        type: integer
+      uid:
+        example: 1
+        type: integer
+      username:
+        example: 苹果香蕉
+        type: string
+    type: object
   models.FocusRequest:
     properties:
       "on":
@@ -950,6 +977,32 @@ paths:
       summary: 设置宠物图片
       tags:
       - Pet
+  /user/relation/getFans:
+    get:
+      consumes:
+      - application/json
+      description: 可获取用户关注的人的列表。 status说明， 0 - 已关注， 1 - 已互关
+      operationId: get_fans_to_others
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            items:
+              $ref: '#/definitions/models.Fan'
+            type: array
+      security:
+      - x-token: []
+      summary: 获取用户关注的人的列表
+      tags:
+      - Relation
   /user/relation/setFocusOn:
     post:
       consumes:

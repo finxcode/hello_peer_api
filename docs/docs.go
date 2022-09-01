@@ -816,6 +816,47 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/relation/getFans": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可获取用户关注的人的列表。 status说明， 0 - 已关注， 1 - 已互关",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "获取用户关注的人的列表",
+                "operationId": "get_fans_to_others",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Fan"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/user/relation/setFocusOn": {
             "post": {
                 "security": [
@@ -1479,6 +1520,43 @@ const docTemplate = `{
                 "weight": {
                     "type": "number",
                     "example": 56.5
+                }
+            }
+        },
+        "models.Fan": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer",
+                    "example": 26
+                },
+                "coverImage": {
+                    "type": "string",
+                    "example": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132"
+                },
+                "location": {
+                    "type": "string",
+                    "example": "广东，深圳"
+                },
+                "occupation": {
+                    "type": "string",
+                    "example": "产品经理"
+                },
+                "petName": {
+                    "type": "string",
+                    "example": "一个宠物"
+                },
+                "status": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "uid": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "username": {
+                    "type": "string",
+                    "example": "苹果香蕉"
                 }
             }
         },

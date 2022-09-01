@@ -16,3 +16,33 @@ import "github.com/gin-gonic/gin"
 func SetFocusOn(c *gin.Context) {
 	//设置关注状态
 }
+
+// getFans
+// @Summary 获取用户我的粉丝列表
+// @Description 可获取用户的粉丝列表。 status说明， 0 - 关注ta， 1 - 已互关
+// @ID get_fans
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 0 {array} models.Fan
+// @Router /user/relation/getFans [get]
+func getFans(c *gin.Context) {
+	//获取用户我的粉丝
+}
+
+// getFansToOthers
+// @Summary 获取用户关注的人的列表
+// @Description 可获取用户关注的人的列表。 status说明， 0 - 已关注， 1 - 已互关
+// @ID get_fans_to_others
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 0 {array} models.Fan
+// @Router /user/relation/getFans [get]
+func getFansToOthers(c *gin.Context) {
+	//获取用户关注的人的列表
+}
