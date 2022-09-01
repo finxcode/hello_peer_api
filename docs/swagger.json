@@ -816,6 +816,47 @@
                         "x-token": []
                     }
                 ],
+                "description": "可获取用户的粉丝列表。 status说明， 0 - 关注ta， 1 - 已互关",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "获取用户我的粉丝列表",
+                "operationId": "get_fans",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Fan"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/relation/getFansToOthers": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
                 "description": "可获取用户关注的人的列表。 status说明， 0 - 已关注， 1 - 已互关",
                 "consumes": [
                     "application/json"

@@ -981,6 +981,32 @@ paths:
     get:
       consumes:
       - application/json
+      description: 可获取用户的粉丝列表。 status说明， 0 - 关注ta， 1 - 已互关
+      operationId: get_fans
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            items:
+              $ref: '#/definitions/models.Fan'
+            type: array
+      security:
+      - x-token: []
+      summary: 获取用户我的粉丝列表
+      tags:
+      - Relation
+  /user/relation/getFansToOthers:
+    get:
+      consumes:
+      - application/json
       description: 可获取用户关注的人的列表。 status说明， 0 - 已关注， 1 - 已互关
       operationId: get_fans_to_others
       parameters:

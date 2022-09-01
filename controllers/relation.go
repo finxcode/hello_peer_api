@@ -42,7 +42,7 @@ func getFans(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Success 0 {array} models.Fan
-// @Router /user/relation/getFans [get]
+// @Router /user/relation/getFansToOthers [get]
 func getFansToOthers(c *gin.Context) {
 	//获取用户关注的人的列表
 }
