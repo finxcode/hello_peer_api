@@ -11,7 +11,8 @@ import "github.com/gin-gonic/gin"
 // @Produce application/json
 // @Security x-token
 // @param x-token header string true "Authorization"
-// @Success 0 {object} models.FocusRequest
+// @Param focus body models.FocusRequest true "关注谁"
+// @Success 0
 // @Router /user/relation/setFocusOn [post]
 func SetFocusOn(c *gin.Context) {
 	//设置关注状态
@@ -45,4 +46,36 @@ func getFans(c *gin.Context) {
 // @Router /user/relation/getFansToOthers [get]
 func getFansToOthers(c *gin.Context) {
 	//获取用户关注的人的列表
+}
+
+// AddViewOn
+// @Summary 设置看过某个用户
+// @Description 可根据目标用户ID，设置用户之间的关注。
+// @ID add_view_on
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param view body models.ViewRequest true "看过谁"
+// @Success 0
+// @Router /user/relation/addViewOn [post]
+func AddViewOn(c *gin.Context) {
+	//设置看过状态
+}
+
+// SetViewRevealed
+// @Summary 设置用户立即揭秘状态
+// @Description 可根据目标用户ID，设置看过我的用户立即揭秘状态。
+// @ID set_view_revealed
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param view body models.ViewRequest true "看过谁"
+// @Success 0
+// @Router /user/relation/setViewRevealed [post]
+func SetViewRevealed(c *gin.Context) {
+	//设置立即揭秘状态
 }

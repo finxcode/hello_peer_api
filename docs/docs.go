@@ -816,6 +816,50 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/relation/addViewOn": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据目标用户ID，设置用户之间的关注。",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "设置看过某个用户",
+                "operationId": "add_view_on",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "看过谁",
+                        "name": "view",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ViewRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/user/relation/getFans": {
             "get": {
                 "security": [
@@ -924,14 +968,64 @@ const docTemplate = `{
                         "name": "x-token",
                         "in": "header",
                         "required": true
+                    },
+                    {
+                        "description": "关注谁",
+                        "name": "focus",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.FocusRequest"
+                        }
                     }
                 ],
                 "responses": {
                     "0": {
-                        "description": "",
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/relation/setViewRevealed": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据目标用户ID，设置看过我的用户立即揭秘状态。",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "设置用户立即揭秘状态",
+                "operationId": "set_view_revealed",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "看过谁",
+                        "name": "view",
+                        "in": "body",
+                        "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.FocusRequest"
+                            "$ref": "#/definitions/models.ViewRequest"
                         }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": ""
                     }
                 }
             }
@@ -1866,6 +1960,15 @@ const docTemplate = `{
                 "userInfo": {
                     "type": "string",
                     "example": ""
+                }
+            }
+        },
+        "models.ViewRequest": {
+            "type": "object",
+            "properties": {
+                "on": {
+                    "type": "string",
+                    "example": "2"
                 }
             }
         }

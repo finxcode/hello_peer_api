@@ -459,6 +459,12 @@ definitions:
         example: ""
         type: string
     type: object
+  models.ViewRequest:
+    properties:
+      "on":
+        example: "2"
+        type: string
+    type: object
 host: https://hellopeer.net
 info:
   contact:
@@ -977,6 +983,34 @@ paths:
       summary: 设置宠物图片
       tags:
       - Pet
+  /user/relation/addViewOn:
+    post:
+      consumes:
+      - application/json
+      description: 可根据目标用户ID，设置用户之间的关注。
+      operationId: add_view_on
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 看过谁
+        in: body
+        name: view
+        required: true
+        schema:
+          $ref: '#/definitions/models.ViewRequest'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置看过某个用户
+      tags:
+      - Relation
   /user/relation/getFans:
     get:
       consumes:
@@ -1041,16 +1075,48 @@ paths:
         name: x-token
         required: true
         type: string
+      - description: 关注谁
+        in: body
+        name: focus
+        required: true
+        schema:
+          $ref: '#/definitions/models.FocusRequest'
       produces:
       - application/json
       responses:
         "0":
           description: ""
-          schema:
-            $ref: '#/definitions/models.FocusRequest'
       security:
       - x-token: []
       summary: 设置两个用户之间的关注
+      tags:
+      - Relation
+  /user/relation/setViewRevealed:
+    post:
+      consumes:
+      - application/json
+      description: 可根据目标用户ID，设置看过我的用户立即揭秘状态。
+      operationId: set_view_revealed
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 看过谁
+        in: body
+        name: view
+        required: true
+        schema:
+          $ref: '#/definitions/models.ViewRequest'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户立即揭秘状态
       tags:
       - Relation
   /user/setUserBasicInfo:
