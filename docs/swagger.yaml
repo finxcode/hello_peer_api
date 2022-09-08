@@ -1119,6 +1119,50 @@ paths:
       summary: 设置用户立即揭秘状态
       tags:
       - Relation
+  /user/relation/updateAllNewFocusStatus:
+    post:
+      consumes:
+      - application/json
+      description: 可设置用户新增关注已阅
+      operationId: update_all_new_focus_status
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户新增关注已阅
+      tags:
+      - Relation
+  /user/relation/updateAllNewViewStatus:
+    post:
+      consumes:
+      - application/json
+      description: 可设置用户新增看过已阅
+      operationId: update_all_new_view_status
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户新增看过已阅
+      tags:
+      - Relation
   /user/setUserBasicInfo:
     post:
       consumes:
