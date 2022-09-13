@@ -459,6 +459,39 @@ definitions:
         example: ""
         type: string
     type: object
+  models.View:
+    properties:
+      age:
+        example: 26
+        type: integer
+      coverImage:
+        example: https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132
+        type: string
+      highlight:
+        example: 感兴趣
+        type: string
+      location:
+        example: 广东，深圳
+        type: string
+      message:
+        example: Ta好像对你很感兴趣
+        type: string
+      occupation:
+        example: 产品经理
+        type: string
+      petName:
+        example: 一个宠物
+        type: string
+      status:
+        example: 1
+        type: integer
+      uid:
+        example: 1
+        type: integer
+      username:
+        example: 香蕉苹果
+        type: string
+    type: object
   models.ViewRequest:
     properties:
       "on":
@@ -1061,6 +1094,32 @@ paths:
       security:
       - x-token: []
       summary: 获取用户关注的人的列表
+      tags:
+      - Relation
+  /user/relation/getViewList:
+    get:
+      consumes:
+      - application/json
+      description: 可获取用户关注列表 status说明： 0 - 新关注（未揭秘） 1 - 已阅关注（未揭秘） 2 - 已揭秘
+      operationId: get_view_list
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            items:
+              $ref: '#/definitions/models.View'
+            type: array
+      security:
+      - x-token: []
+      summary: 获取用户关注列表
       tags:
       - Relation
   /user/relation/setFocusOn:

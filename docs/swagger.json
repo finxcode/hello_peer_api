@@ -935,6 +935,47 @@
                 }
             }
         },
+        "/user/relation/getViewList": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可获取用户关注列表 status说明： 0 - 新关注（未揭秘） 1 - 已阅关注（未揭秘） 2 - 已揭秘",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "获取用户关注列表",
+                "operationId": "get_view_list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.View"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/user/relation/setFocusOn": {
             "post": {
                 "security": [
@@ -2023,6 +2064,51 @@
                 "userInfo": {
                     "type": "string",
                     "example": ""
+                }
+            }
+        },
+        "models.View": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer",
+                    "example": 26
+                },
+                "coverImage": {
+                    "type": "string",
+                    "example": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132"
+                },
+                "highlight": {
+                    "type": "string",
+                    "example": "感兴趣"
+                },
+                "location": {
+                    "type": "string",
+                    "example": "广东，深圳"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Ta好像对你很感兴趣"
+                },
+                "occupation": {
+                    "type": "string",
+                    "example": "产品经理"
+                },
+                "petName": {
+                    "type": "string",
+                    "example": "一个宠物"
+                },
+                "status": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "uid": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "username": {
+                    "type": "string",
+                    "example": "香蕉苹果"
                 }
             }
         },
