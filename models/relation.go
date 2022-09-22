@@ -43,3 +43,12 @@ type ViewTo struct {
 	Images     string `json:"coverImage" example:"https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132"`
 	Status     int    `json:"status" example:"1"`
 }
+
+type ContactRequest struct {
+	On      string `json:"on" example:"1"`
+	Message string `json:"message" example:"我们能做好朋友吗？"`
+}
+
+type ContactApproveRequest struct {
+	On string `json:"on" example:"1"`
+}

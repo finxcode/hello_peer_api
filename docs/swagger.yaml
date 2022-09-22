@@ -242,6 +242,21 @@ definitions:
         example: 56.5
         type: number
     type: object
+  models.ContactApproveRequest:
+    properties:
+      "on":
+        example: "1"
+        type: string
+    type: object
+  models.ContactRequest:
+    properties:
+      message:
+        example: 我们能做好朋友吗？
+        type: string
+      "on":
+        example: "1"
+        type: string
+    type: object
   models.Fan:
     properties:
       age:
@@ -1071,6 +1086,34 @@ paths:
       summary: 设置看过某个用户
       tags:
       - Relation
+  /user/relation/approveFriendRequest:
+    post:
+      consumes:
+      - application/json
+      description: '可根据用户ID，同意目标用户ID的认识请求 error_code -1: 申请状态不允许重复发送请求'
+      operationId: approve_friend_request
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 同意认识请求
+        in: body
+        name: focus
+        required: true
+        schema:
+          $ref: '#/definitions/models.ContactApproveRequest'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 用户可同意其他用户的认识请求
+      tags:
+      - Relation
   /user/relation/getFans:
     get:
       consumes:
@@ -1123,6 +1166,28 @@ paths:
       summary: 获取用户关注的人的列表
       tags:
       - Relation
+  /user/relation/getFriendList:
+    get:
+      consumes:
+      - application/json
+      description: 可根据用户ID，获取用户好友列表
+      operationId: get_friend_list
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 用户可获取好友列表
+      tags:
+      - Relation
   /user/relation/getViewList:
     get:
       consumes:
@@ -1173,6 +1238,62 @@ paths:
       security:
       - x-token: []
       summary: 获取该用户看过的用户列表
+      tags:
+      - Relation
+  /user/relation/releaseFriendRelation:
+    post:
+      consumes:
+      - application/json
+      description: '可根据用户ID，解除目标用户ID的认识关系 error_code -1: 表示用户没有好友关系或者状态不支持解除'
+      operationId: release_friend_relation
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 解除认识关系
+        in: body
+        name: focus
+        required: true
+        schema:
+          $ref: '#/definitions/models.ContactApproveRequest'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 用户可解除与其他用户的好友关系
+      tags:
+      - Relation
+  /user/relation/sendFriendRequest:
+    post:
+      consumes:
+      - application/json
+      description: 可根据用户ID，给目标用户ID发送认识请求
+      operationId: send_friend_request
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 发送认识请求
+        in: body
+        name: focus
+        required: true
+        schema:
+          $ref: '#/definitions/models.ContactRequest'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 用户发送认识请求
       tags:
       - Relation
   /user/relation/setFocusOn:

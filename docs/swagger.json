@@ -853,6 +853,50 @@
                 }
             }
         },
+        "/user/relation/approveFriendRequest": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户ID，同意目标用户ID的认识请求 error_code -1: 申请状态不允许重复发送请求",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "用户可同意其他用户的认识请求",
+                "operationId": "approve_friend_request",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "同意认识请求",
+                        "name": "focus",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ContactApproveRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/user/relation/getFans": {
             "get": {
                 "security": [
@@ -935,6 +979,41 @@
                 }
             }
         },
+        "/user/relation/getFriendList": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户ID，获取用户好友列表",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "用户可获取好友列表",
+                "operationId": "get_friend_list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/user/relation/getViewList": {
             "get": {
                 "security": [
@@ -1013,6 +1092,94 @@
                                 "$ref": "#/definitions/models.ViewTo"
                             }
                         }
+                    }
+                }
+            }
+        },
+        "/user/relation/releaseFriendRelation": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户ID，解除目标用户ID的认识关系 error_code -1: 表示用户没有好友关系或者状态不支持解除",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "用户可解除与其他用户的好友关系",
+                "operationId": "release_friend_relation",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "解除认识关系",
+                        "name": "focus",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ContactApproveRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/user/relation/sendFriendRequest": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户ID，给目标用户ID发送认识请求",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "用户发送认识请求",
+                "operationId": "send_friend_request",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "发送认识请求",
+                        "name": "focus",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ContactRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": ""
                     }
                 }
             }
@@ -1800,6 +1967,28 @@
                 "weight": {
                     "type": "number",
                     "example": 56.5
+                }
+            }
+        },
+        "models.ContactApproveRequest": {
+            "type": "object",
+            "properties": {
+                "on": {
+                    "type": "string",
+                    "example": "1"
+                }
+            }
+        },
+        "models.ContactRequest": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "我们能做好朋友吗？"
+                },
+                "on": {
+                    "type": "string",
+                    "example": "1"
                 }
             }
         },

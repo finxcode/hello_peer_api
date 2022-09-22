@@ -1,0 +1,64 @@
+package relation
+
+// SendFriendRequest
+// @Summary 用户发送认识请求
+// @Description 可根据用户ID，给目标用户ID发送认识请求
+// @ID send_friend_request
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param focus body models.ContactRequest true "发送认识请求"
+// @Success 0
+// @Router /user/relation/sendFriendRequest [post]
+func SendFriendRequest() {
+	//用户可发送好友申请
+}
+
+// ApproveFriendRequest
+// @Summary 用户可同意其他用户的认识请求
+// @Description 可根据用户ID，同意目标用户ID的认识请求 error_code -1: 申请状态不允许重复发送请求
+// @ID approve_friend_request
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param focus body models.ContactApproveRequest true "同意认识请求"
+// @Success 0
+// @Router /user/relation/approveFriendRequest [post]
+func ApproveFriendRequest() {
+	//用户可同意其他用户的认识请求
+}
+
+// ReleaseFriendRelation
+// @Summary 用户可解除与其他用户的好友关系
+// @Description 可根据用户ID，解除目标用户ID的认识关系 error_code -1: 表示用户没有好友关系或者状态不支持解除
+// @ID release_friend_relation
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param focus body models.ContactApproveRequest true "解除认识关系"
+// @Success 0
+// @Router /user/relation/releaseFriendRelation [post]
+func ReleaseFriendRelation() {
+	//用户可解除与其他用户的好友关系
+}
+
+// GetFriendList
+// @Summary 用户可获取好友列表
+// @Description 可根据用户ID，获取用户好友列表
+// @ID get_friend_list
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 0
+// @Router /user/relation/getFriendList [get]
+func GetFriendList() {
+	//用户可解除与其他用户的好友关系
+}
