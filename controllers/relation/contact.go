@@ -62,3 +62,33 @@ func ReleaseFriendRelation() {
 func GetFriendList() {
 	//用户可解除与其他用户的好友关系
 }
+
+// GetFriendsInSevenDays
+// @Summary 用户可获取7日内认识请求
+// @Description 可根据用户ID，获取7日内认识请求 state说明： 0-待处理 1-已婉拒 2-过期自动拒绝 3-已同意
+// @ID get_friends_in_seven_days
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 0 {array} models.FriendToMeResponse
+// @Router /user/relation/getFriendsInSevenDays [get]
+func GetFriendsInSevenDays() {
+	//用户可获取7日内认识请求
+}
+
+// GetFriendsOutOfSevenDays
+// @Summary 用户可获取7日前认识请求
+// @Description 可根据用户ID，获取7日前认识请求 state说明： 0-待处理 1-已婉拒 2-过期自动拒绝 3-已同意
+// @ID get_friends_out_of_seven_days
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 0 {array} models.FriendToMeResponse
+// @Router /user/relation/getFriendsOutOfSevenDays [get]
+func GetFriendsOutOfSevenDays() {
+	//用户可获取7日前认识请求
+}

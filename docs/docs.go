@@ -1021,6 +1021,88 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/relation/getFriendsInSevenDays": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户ID，获取7日内认识请求 state说明： 0-待处理 1-已婉拒 2-过期自动拒绝 3-已同意",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "用户可获取7日内认识请求",
+                "operationId": "get_friends_in_seven_days",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.FriendToMeResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/relation/getFriendsOutOfSevenDays": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户ID，获取7日前认识请求 state说明： 0-待处理 1-已婉拒 2-过期自动拒绝 3-已同意",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "用户可获取7日前认识请求",
+                "operationId": "get_friends_out_of_seven_days",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.FriendToMeResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/user/relation/getViewList": {
             "get": {
                 "security": [
@@ -2046,6 +2128,35 @@ const docTemplate = `{
                 "status": {
                     "type": "string",
                     "example": "1"
+                }
+            }
+        },
+        "models.FriendToMeResponse": {
+            "type": "object",
+            "properties": {
+                "coverImage": {
+                    "type": "string",
+                    "example": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132"
+                },
+                "message": {
+                    "type": "string",
+                    "example": "我们可以做朋友吗？"
+                },
+                "petName": {
+                    "type": "string",
+                    "example": "一个宠物"
+                },
+                "state": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "uid": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "username": {
+                    "type": "string",
+                    "example": "苹果香蕉"
                 }
             }
         },

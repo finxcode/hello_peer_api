@@ -52,3 +52,12 @@ type ContactRequest struct {
 type ContactApproveRequest struct {
 	On string `json:"on" example:"1"`
 }
+
+type FriendToMeResponse struct {
+	Id       int    `json:"uid" example:"1"`
+	UserName string `json:"username" example:"苹果香蕉"`
+	PetName  string `json:"petName" example:"一个宠物"`
+	Images   string `json:"coverImage" example:"https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132"`
+	Message  string `json:"message" example:"我们可以做朋友吗？"`
+	State    int    `json:"state" example:"1"`
+}

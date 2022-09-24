@@ -293,6 +293,27 @@ definitions:
         example: "1"
         type: string
     type: object
+  models.FriendToMeResponse:
+    properties:
+      coverImage:
+        example: https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132
+        type: string
+      message:
+        example: 我们可以做朋友吗？
+        type: string
+      petName:
+        example: 一个宠物
+        type: string
+      state:
+        example: 1
+        type: integer
+      uid:
+        example: 1
+        type: integer
+      username:
+        example: 苹果香蕉
+        type: string
+    type: object
   models.HomepageInfo:
     properties:
       avatar:
@@ -1186,6 +1207,58 @@ paths:
       security:
       - x-token: []
       summary: 用户可获取好友列表
+      tags:
+      - Relation
+  /user/relation/getFriendsInSevenDays:
+    get:
+      consumes:
+      - application/json
+      description: 可根据用户ID，获取7日内认识请求 state说明： 0-待处理 1-已婉拒 2-过期自动拒绝 3-已同意
+      operationId: get_friends_in_seven_days
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            items:
+              $ref: '#/definitions/models.FriendToMeResponse'
+            type: array
+      security:
+      - x-token: []
+      summary: 用户可获取7日内认识请求
+      tags:
+      - Relation
+  /user/relation/getFriendsOutOfSevenDays:
+    get:
+      consumes:
+      - application/json
+      description: 可根据用户ID，获取7日前认识请求 state说明： 0-待处理 1-已婉拒 2-过期自动拒绝 3-已同意
+      operationId: get_friends_out_of_seven_days
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            items:
+              $ref: '#/definitions/models.FriendToMeResponse'
+            type: array
+      security:
+      - x-token: []
+      summary: 用户可获取7日前认识请求
       tags:
       - Relation
   /user/relation/getViewList:
