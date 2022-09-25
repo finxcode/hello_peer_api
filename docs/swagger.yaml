@@ -340,6 +340,27 @@ definitions:
         example: 1
         type: integer
     type: object
+  models.MyFriendRequest:
+    properties:
+      createdAt:
+        example: "2022-09-24"
+        type: string
+      id:
+        example: 1
+        type: integer
+      images:
+        example: https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132
+        type: string
+      petName:
+        example: 一个宠物
+        type: string
+      state:
+        example: 1
+        type: integer
+      userName:
+        example: 苹果香蕉
+        type: string
+    type: object
   models.Pagination:
     properties:
       limit:
@@ -1259,6 +1280,32 @@ paths:
       security:
       - x-token: []
       summary: 用户可获取7日前认识请求
+      tags:
+      - Relation
+  /user/relation/getMyFriendRequests:
+    get:
+      consumes:
+      - application/json
+      description: 可根据用户ID，获取对其它用户的认识请求 state说明： 0-待处理 1-已婉拒 2-过期自动拒绝 3-已同意
+      operationId: get_my_friend_requests
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            items:
+              $ref: '#/definitions/models.MyFriendRequest'
+            type: array
+      security:
+      - x-token: []
+      summary: 用户可获取对其它用户的认识请求
       tags:
       - Relation
   /user/relation/getViewList:

@@ -92,3 +92,18 @@ func GetFriendsInSevenDays() {
 func GetFriendsOutOfSevenDays() {
 	//用户可获取7日前认识请求
 }
+
+// GetMyFriendRequests
+// @Summary 用户可获取对其它用户的认识请求
+// @Description 可根据用户ID，获取对其它用户的认识请求 state说明： 0-待处理 1-已婉拒 2-过期自动拒绝 3-已同意
+// @ID get_my_friend_requests
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 0 {array} models.MyFriendRequest
+// @Router /user/relation/getMyFriendRequests [get]
+func GetMyFriendRequests() {
+	//用户可获取对其它用户的认识请求
+}
