@@ -795,7 +795,8 @@ paths:
     get:
       consumes:
       - application/json
-      description: 可通过用户ID获取用户详情
+      description: 可通过用户ID获取用户详情  focusStatus说明： 0-未关注 1-已关注 friendStatus说明： -1-想认识ta
+        0-已申请 1-发消息 2-去同意
       operationId: get_random_users_details
       parameters:
       - description: Authorization
@@ -882,8 +883,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: 可根据用户ID获取用户详情 focusStatus说明： 0-未关注 1-已关注 friendStatus说明： -1-想认识ta
-        0-已申请 1-发消息 2-去同意
+      description: 可根据用户ID获取用户详情
       operationId: get_user_details_by_id
       parameters:
       - description: Authorization

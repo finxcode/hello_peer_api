@@ -94,7 +94,7 @@ func GetRandomUsersInSquare(c *gin.Context) {
 
 // GetRandomUserDetails
 // @Summary 获取广场用户详情
-// @Description 可通过用户ID获取用户详情
+// @Description 可通过用户ID获取用户详情  focusStatus说明： 0-未关注 1-已关注 friendStatus说明： -1-想认识ta 0-已申请 1-发消息 2-去同意
 // @ID get_random_users_details
 // @Tags User
 // @Accept application/json
@@ -277,7 +277,7 @@ func GetUserHomepageInfo(c *gin.Context) {
 
 // GetUserDetailsById
 // @Summary 根据用户ID获取用户详情
-// @Description 可根据用户ID获取用户详情 focusStatus说明： 0-未关注 1-已关注 friendStatus说明： -1-想认识ta 0-已申请 1-发消息 2-去同意
+// @Description 可根据用户ID获取用户详情
 // @ID get_user_details_by_id
 // @Tags User
 // @Accept application/json

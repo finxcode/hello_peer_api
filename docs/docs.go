@@ -326,7 +326,7 @@ const docTemplate = `{
                         "x-token": []
                     }
                 ],
-                "description": "可通过用户ID获取用户详情",
+                "description": "可通过用户ID获取用户详情  focusStatus说明： 0-未关注 1-已关注 friendStatus说明： -1-想认识ta 0-已申请 1-发消息 2-去同意",
                 "consumes": [
                     "application/json"
                 ],
@@ -462,7 +462,7 @@ const docTemplate = `{
                         "x-token": []
                     }
                 ],
-                "description": "可根据用户ID获取用户详情 focusStatus说明： 0-未关注 1-已关注 friendStatus说明： -1-想认识ta 0-已申请 1-发消息 2-去同意",
+                "description": "可根据用户ID获取用户详情",
                 "consumes": [
                     "application/json"
                 ],
