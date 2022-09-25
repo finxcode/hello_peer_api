@@ -87,6 +87,12 @@ definitions:
       education:
         example: 本科
         type: string
+      focusStatus:
+        example: 1
+        type: integer
+      friendStatus:
+        example: 0
+        type: integer
       gender:
         example: 1
         type: integer
@@ -117,6 +123,8 @@ definitions:
         type: string
       occupation:
         example: 平面设计师
+        type: string
+      petName:
         type: string
       purpose:
         example: 交友
@@ -874,7 +882,8 @@ paths:
     get:
       consumes:
       - application/json
-      description: 可根据用户ID获取用户详情
+      description: 可根据用户ID获取用户详情 focusStatus说明： 0-未关注 1-已关注 friendStatus说明： -1-想认识ta
+        0-已申请 1-发消息 2-去同意
       operationId: get_user_details_by_id
       parameters:
       - description: Authorization

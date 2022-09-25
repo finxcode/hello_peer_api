@@ -462,7 +462,7 @@ const docTemplate = `{
                         "x-token": []
                     }
                 ],
-                "description": "可根据用户ID获取用户详情",
+                "description": "可根据用户ID获取用户详情 focusStatus说明： 0-未关注 1-已关注 friendStatus说明： -1-想认识ta 0-已申请 1-发消息 2-去同意",
                 "consumes": [
                     "application/json"
                 ],
@@ -1889,6 +1889,14 @@ const docTemplate = `{
                     "type": "string",
                     "example": "本科"
                 },
+                "focusStatus": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "friendStatus": {
+                    "type": "integer",
+                    "example": 0
+                },
                 "gender": {
                     "type": "integer",
                     "example": 1
@@ -1930,6 +1938,9 @@ const docTemplate = `{
                 "occupation": {
                     "type": "string",
                     "example": "平面设计师"
+                },
+                "petName": {
+                    "type": "string"
                 },
                 "purpose": {
                     "type": "string",

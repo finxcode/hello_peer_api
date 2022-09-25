@@ -49,6 +49,9 @@ type UserDetails struct {
 	Gender        int      `json:"gender" example:"1"`
 	Marriage      string   `json:"marriage" example:"未婚"`
 	Income        string   `json:"income" example:"15-25w"`
+	PetName       string   `json:"petName" examle:"一个宠物"`
+	FocusStatus   int      `json:"focusStatus" example:"1"`
+	FriendStatus  int      `json:"friendStatus" example:"0"`
 }
 
 type UserDetailsUpdate struct {
@@ -274,7 +277,7 @@ func GetUserHomepageInfo(c *gin.Context) {
 
 // GetUserDetailsById
 // @Summary 根据用户ID获取用户详情
-// @Description 可根据用户ID获取用户详情
+// @Description 可根据用户ID获取用户详情 focusStatus说明： 0-未关注 1-已关注 friendStatus说明： -1-想认识ta 0-已申请 1-发消息 2-去同意
 // @ID get_user_details_by_id
 // @Tags User
 // @Accept application/json
