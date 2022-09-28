@@ -70,3 +70,15 @@ type MyFriendRequest struct {
 	State     int    `json:"state" example:"1"`
 	CreatedAt string `json:"createdAt" example:"2022-09-24"`
 }
+
+type Friend struct {
+	Id         int    `json:"uid" example:"1"`
+	UserName   string `json:"username" example:"苹果香蕉"`
+	PetName    string `json:"petName" example:"一个宠物"`
+	PetType    int    `json:"petType" example:"1"`
+	Gender     int    `json:"gender" example:"2"`
+	Age        int    `json:"age" example:"27"`
+	Location   string `json:"location" example:"广东省深圳市"`
+	Occupation string `json:"occupation" example:"UI设计"`
+	Images     string `json:"coverImage" example:"https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132"`
+}

@@ -50,14 +50,14 @@ func ReleaseFriendRelation() {
 
 // GetFriendList
 // @Summary 用户可获取好友列表
-// @Description 可根据用户ID，获取用户好友列表
+// @Description 可根据用户ID，获取用户好友列表 宠物类型说明 0-猫 1-狗 用户性别说明 1-男 2-女
 // @ID get_friend_list
 // @Tags Relation
 // @Accept application/json
 // @Produce application/json
 // @Security x-token
 // @param x-token header string true "Authorization"
-// @Success 0
+// @Success 0 {array} models.Friend
 // @Router /user/relation/getFriendList [get]
 func GetFriendList() {
 	//用户可解除与其他用户的好友关系

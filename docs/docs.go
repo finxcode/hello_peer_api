@@ -993,7 +993,7 @@ const docTemplate = `{
                         "x-token": []
                     }
                 ],
-                "description": "可根据用户ID，获取用户好友列表",
+                "description": "可根据用户ID，获取用户好友列表 宠物类型说明 0-猫 1-狗 用户性别说明 1-男 2-女",
                 "consumes": [
                     "application/json"
                 ],
@@ -1016,7 +1016,13 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "0": {
-                        "description": ""
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Friend"
+                            }
+                        }
                     }
                 }
             }
@@ -2180,6 +2186,47 @@ const docTemplate = `{
                 "status": {
                     "type": "string",
                     "example": "1"
+                }
+            }
+        },
+        "models.Friend": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer",
+                    "example": 27
+                },
+                "coverImage": {
+                    "type": "string",
+                    "example": "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132"
+                },
+                "gender": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "location": {
+                    "type": "string",
+                    "example": "广东省深圳市"
+                },
+                "occupation": {
+                    "type": "string",
+                    "example": "UI设计"
+                },
+                "petName": {
+                    "type": "string",
+                    "example": "一个宠物"
+                },
+                "petType": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "uid": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "username": {
+                    "type": "string",
+                    "example": "苹果香蕉"
                 }
             }
         },

@@ -301,6 +301,36 @@ definitions:
         example: "1"
         type: string
     type: object
+  models.Friend:
+    properties:
+      age:
+        example: 27
+        type: integer
+      coverImage:
+        example: https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTL13ic0iaA0ffWldrLjv9Ou02CuJCcjuKJ7rAzatVEzEUsrceUEdIuSiaR7bnicf5X2puMFRNDLrPEJlw/132
+        type: string
+      gender:
+        example: 2
+        type: integer
+      location:
+        example: 广东省深圳市
+        type: string
+      occupation:
+        example: UI设计
+        type: string
+      petName:
+        example: 一个宠物
+        type: string
+      petType:
+        example: 1
+        type: integer
+      uid:
+        example: 1
+        type: integer
+      username:
+        example: 苹果香蕉
+        type: string
+    type: object
   models.FriendToMeResponse:
     properties:
       coverImage:
@@ -1221,7 +1251,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: 可根据用户ID，获取用户好友列表
+      description: 可根据用户ID，获取用户好友列表 宠物类型说明 0-猫 1-狗 用户性别说明 1-男 2-女
       operationId: get_friend_list
       parameters:
       - description: Authorization
@@ -1234,6 +1264,10 @@ paths:
       responses:
         "0":
           description: ""
+          schema:
+            items:
+              $ref: '#/definitions/models.Friend'
+            type: array
       security:
       - x-token: []
       summary: 用户可获取好友列表
