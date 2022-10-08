@@ -1603,6 +1603,44 @@
                 }
             }
         },
+        "/user/setting/getUserSettings": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可获取用户个人设置 UserVerified 用户实名 0-未认证 1-已认证 PetVerified 宠物实名 0-未认证 1-已认证 phone=\"\" 未绑定",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "用户可个人设置",
+                "operationId": "get_user_settings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.UserSetting"
+                        }
+                    }
+                }
+            }
+        },
         "/user/tencent/getUserIMSig": {
             "get": {
                 "security": [
@@ -2533,6 +2571,35 @@
                 "userInfo": {
                     "type": "string",
                     "example": ""
+                }
+            }
+        },
+        "models.UserSetting": {
+            "type": "object",
+            "properties": {
+                "helloId": {
+                    "type": "string",
+                    "example": "hp135895332"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "petVerified": {
+                    "type": "integer",
+                    "example": 0
+                },
+                "phone": {
+                    "type": "string",
+                    "example": "13726352437"
+                },
+                "verified": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "wechatName": {
+                    "type": "string",
+                    "example": "香蕉苹果"
                 }
             }
         },

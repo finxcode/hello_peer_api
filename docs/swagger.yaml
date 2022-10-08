@@ -554,6 +554,27 @@ definitions:
         example: ""
         type: string
     type: object
+  models.UserSetting:
+    properties:
+      helloId:
+        example: hp135895332
+        type: string
+      id:
+        example: 1
+        type: integer
+      petVerified:
+        example: 0
+        type: integer
+      phone:
+        example: "13726352437"
+        type: string
+      verified:
+        example: 1
+        type: integer
+      wechatName:
+        example: 香蕉苹果
+        type: string
+    type: object
   models.View:
     properties:
       age:
@@ -1643,6 +1664,31 @@ paths:
       summary: 设置用户性别
       tags:
       - User
+  /user/setting/getUserSettings:
+    get:
+      consumes:
+      - application/json
+      description: 可获取用户个人设置 UserVerified 用户实名 0-未认证 1-已认证 PetVerified 宠物实名 0-未认证
+        1-已认证 phone="" 未绑定
+      operationId: get_user_settings
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserSetting'
+      security:
+      - x-token: []
+      summary: 用户可个人设置
+      tags:
+      - Relation
   /user/tencent/getUserIMSig:
     get:
       consumes:
