@@ -1617,7 +1617,7 @@ const docTemplate = `{
                         "x-token": []
                     }
                 ],
-                "description": "可获取用户个人设置 UserVerified 用户实名 0-未认证 1-已认证 PetVerified 宠物实名 0-未认证 1-已认证 phone=\"\" 未绑定",
+                "description": "可获取用户个人设置 Verified 用户实名 0-未认证 1-已认证 PetVerified 宠物实名 0-未认证 1-已认证 phone=\"\" 未绑定",
                 "consumes": [
                     "application/json"
                 ],
