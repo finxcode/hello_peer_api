@@ -1688,7 +1688,7 @@ paths:
       - x-token: []
       summary: 用户可个人设置
       tags:
-      - Relation
+      - Settings
   /user/tencent/getUserIMSig:
     get:
       consumes:

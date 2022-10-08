@@ -1625,7 +1625,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Relation"
+                    "Settings"
                 ],
                 "summary": "用户可个人设置",
                 "operationId": "get_user_settings",

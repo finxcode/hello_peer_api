@@ -4,7 +4,7 @@ package settings
 // @Summary 用户可个人设置
 // @Description 可获取用户个人设置 UserVerified 用户实名 0-未认证 1-已认证 PetVerified 宠物实名 0-未认证 1-已认证 phone="" 未绑定
 // @ID get_user_settings
-// @Tags Relation
+// @Tags Settings
 // @Accept application/json
 // @Produce application/json
 // @Security x-token
