@@ -211,6 +211,18 @@ definitions:
         example: 43kg
         type: string
     type: object
+  models.Agreement:
+    properties:
+      content:
+        example: 协议正文
+        type: string
+      name:
+        example: terms
+        type: string
+      title:
+        example: hello peer用户服务协议
+        type: string
+    type: object
   models.AutoLogin:
     properties:
       code:
@@ -817,6 +829,54 @@ paths:
       security:
       - x-token: []
       summary: 设置用户广场设置
+      tags:
+      - Settings
+  /sys/getPrivacyPolicy:
+    get:
+      consumes:
+      - application/json
+      description: 可获取隐私政策
+      operationId: get_privacy_policy
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Agreement'
+      security:
+      - x-token: []
+      summary: 可获取隐私政策
+      tags:
+      - Settings
+  /sys/getUserTerms:
+    get:
+      consumes:
+      - application/json
+      description: 可获取用户协议
+      operationId: get_user_terms
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Agreement'
+      security:
+      - x-token: []
+      summary: 可获取用户服务协议
       tags:
       - Settings
   /user/deleteUserImage:
