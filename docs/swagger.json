@@ -1880,6 +1880,41 @@
                     }
                 }
             }
+        },
+        "/users/relation/updateAllNewFriendRequestStatus": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "系统可将用户新认识申请更新为已阅",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "系统可将用户新认识申请更新为已阅",
+                "operationId": "update_all_new_friend_request_status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": ""
+                    }
+                }
+            }
         }
     },
     "definitions": {

@@ -1854,4 +1854,26 @@ paths:
       summary: 设置用户图片
       tags:
       - User
+  /users/relation/updateAllNewFriendRequestStatus:
+    post:
+      consumes:
+      - application/json
+      description: 系统可将用户新认识申请更新为已阅
+      operationId: update_all_new_friend_request_status
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 系统可将用户新认识申请更新为已阅
+      tags:
+      - Relation
 swagger: "2.0"
