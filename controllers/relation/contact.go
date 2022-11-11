@@ -107,3 +107,18 @@ func GetFriendsOutOfSevenDays() {
 func GetMyFriendRequests() {
 	//用户可获取对其它用户的认识请求
 }
+
+// UpdateAllNewFriendRequestStatus
+// @Summary 系统可将用户新认识申请更新为已阅
+// @Description 系统可将用户新认识申请更新为已阅
+// @ID update_all_new_friend_request_status
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Success 0
+// @Router /users/relation/updateAllNewFriendRequestStatus [post]
+func UpdateAllNewFriendRequestStatus() {
+	//系统可将用户新认识申请更新为已阅
+}

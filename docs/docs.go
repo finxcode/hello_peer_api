@@ -283,6 +283,82 @@ const docTemplate = `{
                 }
             }
         },
+        "/sys/getPrivacyPolicy": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可获取隐私政策",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "可获取隐私政策",
+                "operationId": "get_privacy_policy",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Agreement"
+                        }
+                    }
+                }
+            }
+        },
+        "/sys/getUserTerms": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可获取用户协议",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "可获取用户服务协议",
+                "operationId": "get_user_terms",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Agreement"
+                        }
+                    }
+                }
+            }
+        },
         "/user/deleteUserImage": {
             "post": {
                 "security": [
@@ -1811,6 +1887,41 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/users/relation/updateAllNewFriendRequestStatus": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "系统可将用户新认识申请更新为已阅",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "系统可将用户新认识申请更新为已阅",
+                "operationId": "update_all_new_friend_request_status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": ""
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -2098,6 +2209,23 @@ const docTemplate = `{
                 "weight": {
                     "type": "string",
                     "example": "43kg"
+                }
+            }
+        },
+        "models.Agreement": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "example": "协议正文"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "terms"
+                },
+                "title": {
+                    "type": "string",
+                    "example": "hello peer用户服务协议"
                 }
             }
         },
