@@ -19,7 +19,7 @@ import (
 // @BasePath /api/v0.1
 func main() {
 	r := gin.Default()
-	url := ginSwagger.URL("http://localhost:8181/swagger/doc.json") // The url pointing to API definition
+	url := ginSwagger.URL("http://43.138.223.2:8181/swagger/doc.json") // The url pointing to API definition
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
 
 	r.Run(":8181")
