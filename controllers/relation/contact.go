@@ -32,6 +32,22 @@ func ApproveFriendRequest() {
 	//用户可同意其他用户的认识请求
 }
 
+// RejectFriendRequest
+// @Summary 用户可拒绝其他用户的认识请求
+// @Description 可根据用户ID，拒绝目标用户ID的认识请求 error_code -1: 申请状态不允许重复发送请求
+// @ID reject_friend_request
+// @Tags Relation
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param focus body models.ContactApproveRequest true "拒绝认识请求"
+// @Success 0
+// @Router /user/relation/rejectFriendRequest [post]
+func RejectFriendRequest() {
+	//用户可拒绝其他用户的认识请求
+}
+
 // ReleaseFriendRelation
 // @Summary 用户可解除与其他用户的好友关系
 // @Description 可根据用户ID，解除目标用户ID的认识关系 error_code -1: 表示用户没有好友关系或者状态不支持解除

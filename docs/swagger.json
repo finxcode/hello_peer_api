@@ -1301,6 +1301,50 @@
                 }
             }
         },
+        "/user/relation/rejectFriendRequest": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可根据用户ID，拒绝目标用户ID的认识请求 error_code -1: 申请状态不允许重复发送请求",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Relation"
+                ],
+                "summary": "用户可拒绝其他用户的认识请求",
+                "operationId": "reject_friend_request",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "拒绝认识请求",
+                        "name": "focus",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ContactApproveRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/user/relation/releaseFriendRelation": {
             "post": {
                 "security": [

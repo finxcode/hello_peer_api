@@ -1484,6 +1484,34 @@ paths:
       summary: 获取该用户看过的用户列表
       tags:
       - Relation
+  /user/relation/rejectFriendRequest:
+    post:
+      consumes:
+      - application/json
+      description: '可根据用户ID，拒绝目标用户ID的认识请求 error_code -1: 申请状态不允许重复发送请求'
+      operationId: reject_friend_request
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 拒绝认识请求
+        in: body
+        name: focus
+        required: true
+        schema:
+          $ref: '#/definitions/models.ContactApproveRequest'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 用户可拒绝其他用户的认识请求
+      tags:
+      - Relation
   /user/relation/releaseFriendRelation:
     post:
       consumes:
