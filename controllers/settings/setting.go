@@ -14,3 +14,19 @@ package settings
 func GetUserSettings() {
 	//用户可获取个人设置
 }
+
+// GetUserPhoneNumber
+// @Summary 可通过微信接口获取授权用户手机号
+// @Description 可通过微信接口获取授权用户手机号
+// @ID get_user_phone_number
+// @Tags Settings
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @param code query string true "code"
+// @Success 0 {object} models.UserPhoneNumber
+// @Router /user/setting/getPhoneNumber [get]
+func GetUserPhoneNumber() {
+	//通过微信接口获取用户手机号
+}

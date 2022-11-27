@@ -545,6 +545,11 @@ definitions:
       sig:
         type: string
     type: object
+  models.UserPhoneNumber:
+    properties:
+      phoneNumber:
+        type: string
+    type: object
   models.UserProfileForm:
     properties:
       code:
@@ -1752,6 +1757,35 @@ paths:
       summary: 设置用户性别
       tags:
       - User
+  /user/setting/getPhoneNumber:
+    get:
+      consumes:
+      - application/json
+      description: 可通过微信接口获取授权用户手机号
+      operationId: get_user_phone_number
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: code
+        in: query
+        name: code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.UserPhoneNumber'
+      security:
+      - x-token: []
+      summary: 可通过微信接口获取授权用户手机号
+      tags:
+      - Settings
   /user/setting/getUserSettings:
     get:
       consumes:

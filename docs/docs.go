@@ -1730,6 +1730,51 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/setting/getPhoneNumber": {
+            "get": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可通过微信接口获取授权用户手机号",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Settings"
+                ],
+                "summary": "可通过微信接口获取授权用户手机号",
+                "operationId": "get_user_phone_number",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "code",
+                        "name": "code",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.UserPhoneNumber"
+                        }
+                    }
+                }
+            }
+        },
         "/user/setting/getUserSettings": {
             "get": {
                 "security": [
@@ -2720,6 +2765,14 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "sig": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.UserPhoneNumber": {
+            "type": "object",
+            "properties": {
+                "phoneNumber": {
                     "type": "string"
                 }
             }
