@@ -29,3 +29,8 @@ type HomepageInfo struct {
 type InfoCompletionLevel struct {
 	Level int `json:"level" example:"1"`
 }
+
+type Position struct {
+	Lat float32 `json:"lat" example:"30.3232"`
+	Lng float32 `json:"lng" example:"100.4342"`
+}

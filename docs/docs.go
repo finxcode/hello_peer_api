@@ -1598,6 +1598,50 @@ const docTemplate = `{
                 }
             }
         },
+        "/user/setPosition": {
+            "post": {
+                "security": [
+                    {
+                        "x-token": []
+                    }
+                ],
+                "description": "可设置用户位置坐标",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "设置用户位置坐标",
+                "operationId": "set_user_position",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization",
+                        "name": "x-token",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "用户位置坐标",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Position"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/user/setUserBasicInfo": {
             "post": {
                 "security": [
@@ -2650,6 +2694,19 @@ const docTemplate = `{
                 "weight": {
                     "type": "number",
                     "example": 3.2
+                }
+            }
+        },
+        "models.Position": {
+            "type": "object",
+            "properties": {
+                "lat": {
+                    "type": "number",
+                    "example": 30.3232
+                },
+                "lng": {
+                    "type": "number",
+                    "example": 100.4342
                 }
             }
         },

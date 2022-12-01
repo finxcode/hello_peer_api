@@ -305,3 +305,19 @@ func GetUserDetailsById(c *gin.Context) {
 func GetUserInfoCompleteLevel(c *gin.Context) {
 	//根据用户ID获取用户详情
 }
+
+// SetUserPosition
+// @Summary 设置用户位置坐标
+// @Description 可设置用户位置坐标
+// @ID set_user_position
+// @Tags User
+// @Accept application/json
+// @Produce application/json
+// @Security x-token
+// @param x-token header string true "Authorization"
+// @Param user body models.Position true "用户位置坐标"
+// @Success 0
+// @Router /user/setPosition [post]
+func SetUserPosition(c *gin.Context) {
+	// 设置用户位置坐标
+}

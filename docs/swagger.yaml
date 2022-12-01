@@ -463,6 +463,15 @@ definitions:
         example: 3.2
         type: number
     type: object
+  models.Position:
+    properties:
+      lat:
+        example: 30.3232
+        type: number
+      lng:
+        example: 100.4342
+        type: number
+    type: object
   models.RecommendSetting:
     properties:
       age_Max:
@@ -1673,6 +1682,34 @@ paths:
       summary: 设置用户新增看过已阅
       tags:
       - Relation
+  /user/setPosition:
+    post:
+      consumes:
+      - application/json
+      description: 可设置用户位置坐标
+      operationId: set_user_position
+      parameters:
+      - description: Authorization
+        in: header
+        name: x-token
+        required: true
+        type: string
+      - description: 用户位置坐标
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.Position'
+      produces:
+      - application/json
+      responses:
+        "0":
+          description: ""
+      security:
+      - x-token: []
+      summary: 设置用户位置坐标
+      tags:
+      - User
   /user/setUserBasicInfo:
     post:
       consumes:
