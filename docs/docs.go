@@ -447,7 +447,7 @@ const docTemplate = `{
                         "x-token": []
                     }
                 ],
-                "description": "可通过用户ID以及用户广场设置项获取随机用户列表",
+                "description": "可通过用户ID以及用户广场设置项获取随机用户列表。距离为0表示用户数据不完全，无法计算距离。前端应不予显示。距离返回10，意味着用户距离大于9，小于10。",
                 "consumes": [
                     "application/json"
                 ],
@@ -490,14 +490,14 @@ const docTemplate = `{
                 }
             }
         },
-        "/user/getRecommendedUsers": {
+        "/user/getRecommendedUserList": {
             "get": {
                 "security": [
                     {
                         "x-token": []
                     }
                 ],
-                "description": "可通过用户ID获取推荐用户列表",
+                "description": "可通过用户ID获取推荐用户列表。距离为0表示用户数据不完全，无法计算距离。前端应不予显示。距离返回10，意味着用户距离大于9，小于10。",
                 "consumes": [
                     "application/json"
                 ],
@@ -2069,6 +2069,10 @@ const docTemplate = `{
                     "type": "string",
                     "example": "cover.png"
                 },
+                "distance": {
+                    "type": "integer",
+                    "example": 15
+                },
                 "lat": {
                     "type": "number",
                     "example": 22.51
@@ -2105,6 +2109,10 @@ const docTemplate = `{
                 "coverImageUrl": {
                     "type": "string",
                     "example": "cover.png"
+                },
+                "distance": {
+                    "type": "integer",
+                    "example": 15
                 },
                 "images": {
                     "type": "array",

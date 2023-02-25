@@ -8,6 +8,9 @@ definitions:
       coverImageUrl:
         example: cover.png
         type: string
+      distance:
+        example: 15
+        type: integer
       lat:
         example: 22.51
         type: number
@@ -35,6 +38,9 @@ definitions:
       coverImageUrl:
         example: cover.png
         type: string
+      distance:
+        example: 15
+        type: integer
       images:
         example:
         - img1.jpg
@@ -950,7 +956,7 @@ paths:
     post:
       consumes:
       - application/json
-      description: 可通过用户ID以及用户广场设置项获取随机用户列表
+      description: 可通过用户ID以及用户广场设置项获取随机用户列表。距离为0表示用户数据不完全，无法计算距离。前端应不予显示。距离返回10，意味着用户距离大于9，小于10。
       operationId: get_random_users_list_in_square
       parameters:
       - description: Authorization
@@ -978,11 +984,11 @@ paths:
       summary: 获取用户广场随机用户列表
       tags:
       - User
-  /user/getRecommendedUsers:
+  /user/getRecommendedUserList:
     get:
       consumes:
       - application/json
-      description: 可通过用户ID获取推荐用户列表
+      description: 可通过用户ID获取推荐用户列表。距离为0表示用户数据不完全，无法计算距离。前端应不予显示。距离返回10，意味着用户距离大于9，小于10。
       operationId: get_recommended_users
       parameters:
       - description: Authorization

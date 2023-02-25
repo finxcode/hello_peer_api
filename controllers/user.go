@@ -11,6 +11,7 @@ type RandomUser struct {
 	Lat           float32 `example:"22.51"`
 	Location      string  `example:"南山区"`
 	CoverImageUrl string  `example:"cover.png"`
+	Distance      int     `example:"15"`
 }
 
 type RecommendedUser struct {
@@ -25,6 +26,7 @@ type RecommendedUser struct {
 	CoverImageUrl string   `example:"cover.png"`
 	Tags          string   `example:"猫控 读书达人 电影爱好者"`
 	Images        []string `example:"img1.jpg,img2.jpg"`
+	Distance      int      `example:"15"`
 }
 
 type UserDetails struct {
@@ -78,7 +80,7 @@ type UserDetailsUpdate struct {
 
 // GetRandomUsersInSquare
 // @Summary 获取用户广场随机用户列表
-// @Description 可通过用户ID以及用户广场设置项获取随机用户列表
+// @Description 可通过用户ID以及用户广场设置项获取随机用户列表。距离为0表示用户数据不完全，无法计算距离。前端应不予显示。距离返回10，意味着用户距离大于9，小于10。
 // @ID get_random_users_list_in_square
 // @Tags User
 // @Accept application/json
@@ -108,9 +110,9 @@ func GetRandomUserDetails(c *gin.Context) {
 	//获取用户详情
 }
 
-// GetRecommendedUsers
+// GetRecommendedUserList
 // @Summary 获取用户推荐用户列表
-// @Description 可通过用户ID获取推荐用户列表
+// @Description 可通过用户ID获取推荐用户列表。距离为0表示用户数据不完全，无法计算距离。前端应不予显示。距离返回10，意味着用户距离大于9，小于10。
 // @ID get_recommended_users
 // @Tags User
 // @Accept application/json
@@ -118,8 +120,8 @@ func GetRandomUserDetails(c *gin.Context) {
 // @Security x-token
 // @param x-token header string true "Authorization"
 // @Success 0 {array} RecommendedUser
-// @Router /user/getRecommendedUsers [get]
-func GetRecommendedUsers(c *gin.Context) {
+// @Router /user/getRecommendedUserList [get]
+func GetRecommendedUserList(c *gin.Context) {
 	//获取某一用户推荐用户列表
 }
 
